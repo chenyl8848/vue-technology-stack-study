@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .box1 {
+            height: 50px;
+            padding: 5px;
+            background-color: skyblue;
+        }
+        .box2 {
+            height: 50px;
+            padding: 5px;
+            background-color: orange;
+        }
+        .box3 {
+            height: 5px;
+            padding: 5px;
+            background-color: rebeccapurple;
+        }
+        .box4 {
+            height: 50px;
+            padding: 5px;
+            background-color: antiquewhite;
+        }
+        .list {
+            width: 200px;
+            height: 200px;
+            background-color: peru;
+            /* 在容器内生成滑动窗口 */
+            overflow: auto;
+        }
+        li {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Vue中的事件修饰符：
+            1.prevent：阻止默认事件（常用）；
+            2.stop：阻止事件冒泡（常用）；
+            3.once：事件只触发一次（常用）；
+            4.capture：使用事件的捕获模式；
+            5.self：只有event.target是当前操作的元素时才触发事件；
+            6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕；
+    -->
+
+    <div id="root">
+        <!-- 1.阻止默认事件 -->
+        <!-- 弹窗点击确认后会跳转到百度 -->
+        <a href="https://www.baidu.com" @click="gotoBaidu">点我去百度</a><br/>
+        <!-- 弹窗点击确认后不会跳转到百度 -->
+        <a href="https://www.baidu.com" @click.prevent="gotoBaidu">点我去百度</a><br>
+
+        <!-- 2.stop：阻止事件冒泡 -->
+        <div class = "box1" @click="showInfo">
+            <button @click="showInfo">点我提示信息</button>
+        </div>
+        <div class = "box1" @click="showInfo">
+            <button @click.stop="showInfo">点我提示信息</button>
+        </div>
+        
+        <!--  3.once：事件只触发一次 -->
+        <button @click.once="showInfo">点我提示信息</button>
+
+        <!-- 4.capture：使用事件的捕获模式 -->
+        <div class="box2" @click.capture="showMessage(1)">
+            div01
+            <div class="box3" @click.capture="showMessage(2)">
+                div02
+            </div>
+        </div>
+
+        <!-- 5.self：只有event.target是当前操作的元素时才触发事件 -->
+        <div class="box4" @click.self="showInfo">
+            <button @click="showInfo">点我提示信息</button>
+        </div>
+
+        <!--  6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕 -->\
+        <!--  
+            @scroll、@wheel 滚轮滑动事件，两者的区别：
+                1.scroll是页面滚动条滚动会触发的事件，而 wheel是鼠标滚轮滚动会触发的事件。
+                2，一旦滚动条到底部后，滑动鼠标滚轮继续滚动，wheel 就会一直触发，而 scroll 不会触发
+        -->
+
+        <ul class="list" @scroll="list">
+        <!-- <ul class="list" @wheel="list"> -->
+        <!-- <ul class="list" @wheel.passive="list"> -->
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+
+        <!-- 7.多个修饰符 -->
+        <div @click="showInfo">
+            <a href="https://www.baidu.com" @click="showInfo">点我去百度</a>
+            <a href="https://www.baidu.com" @click.prevent.stop="showInfo">点我去百度</a>
+        </div>
+
+    </div>
+
+    <script>
+        // 阻止 vue 在启动时生成生产提示
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data: {
+
+            },
+            methods: {
+                gotoBaidu() {
+                    alert("点我去百度!")
+                },
+                showInfo() {
+                    alert("hello world")
+                },
+                showMessage(message) {
+                    console.log(message);
+                },
+                list() {
+                    for(let i = 0; i < 10; i++) {
+                        console.log("#");
+                    }
+                    console.log("累坏了");
+                }
+            },
+        })
+    </script>
+</body>
+</html>

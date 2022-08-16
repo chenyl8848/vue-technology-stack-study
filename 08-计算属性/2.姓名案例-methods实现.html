@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例-methods实现</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div id="root">
+            姓：<input type="text" v-model="firstName"></input><br/>
+            名：<input type="text" v-model="lastName"></input><br/>
+            全名：<span>{{fullName()}}</span>
+        </div>
+    </div>
+
+    <script>
+        // 阻止 vue 在启动时生成生产提示
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data: {
+                firstName: "张",
+                lastName: "三",
+            },
+            methods: {
+                fullName() {
+                    return this.firstName + " - " + this.lastName
+                }
+            },
+        })
+    </script>
+</body>
+</html>
