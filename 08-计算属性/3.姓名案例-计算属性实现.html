@@ -25,9 +25,9 @@
         名：<input type="text" v-model="lastName"> <br/>
         <!-- 测试：<input type="text" v-model="x"> <br/> -->
         全名：<span>{{fullName}}</span> <br/>
-			<!-- 全名：<span>{{fullName}}</span> <br/>
-			全名：<span>{{fullName}}</span> <br/>
-			全名：<span>{{fullName}}</span> -->
+        <!-- 全名：<span>{{fullName}}</span> <br/>
+        全名：<span>{{fullName}}</span> <br/>
+        全名：<span>{{fullName}}</span> -->
 
     </div>
 
@@ -35,7 +35,7 @@
         // 阻止 vue 在启动时生成生产提示
         Vue.config.productionTip = false
 
-        new Vue({
+        const vm = new Vue({
             el: "#root",
             data: {
                 firstName: "张",
@@ -46,12 +46,19 @@
                     get() {
                         //get 有什么作用？当有人读取 fullName 时，get 就会被调用，且返回值就作为 fullName 的值
 					    //get 什么时候调用？1.初次读取 fullName 时。2.所依赖的数据发生变化时。
-                        console.log("被调用了");
+                        console.log("get 被调用了");
                         return this.firstName + " - " + this.lastName
+                    },
+                    // set 什么时候被调用？fullName 被修改时
+                    set(value) {
+                        console.log("set 被调用了");
+                        const arr = value.split("-")
+                        this.firstName = arr[0]
+                        this.lastName = arr[1]
                     }
                 }
             }
-        })
+        });
     </script>
 </body>
 </html>
