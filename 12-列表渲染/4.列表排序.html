@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表排序</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>遍历数组</h2>
+        <input type="text" placeholder="输入名字进行过滤" v-model="keyWord"></input>
+        <button @click="sortType = 1">升序排序</button></button>
+        <button @click="sortType = 2">降序排列</button></button>
+        <button @click="sortType = 0">原序排序</button></button>
+        <ul v-for="(p, index) in filterPersonList" ::key="index">
+            <li>{{p.name}} - {{p.age}} - {{p.sex}}</li>
+        </ul>
+    </div>
+
+    <script>
+        // 阻止 vue 在启动时生成生产提示
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data: {
+                keyWord:'',
+                personList:[
+                    {id:'001',name:'马冬梅',age:19,sex:'女'},
+                    {id:'002',name:'周冬雨',age:20,sex:'女'},
+                    {id:'003',name:'周杰伦',age:21,sex:'男'},
+                    {id:'004',name:'温兆伦',age:22,sex:'男'}
+                ],
+                sortType: 1
+            },
+             // 用 comouted 实现
+            computed: {
+                filterPersonList() {
+                    const arr = this.personList.filter((item) => {
+                        return item.name.indexOf(this.keyWord) > -1
+                    })
+                    if (this.sortType) {
+                        arr.sort((p1, p2) => {
+                            return this.sortType === 1 ? p1.age - p2.age : p2.age - p1.age
+                        })
+                    }
+
+                    return arr
+                }
+            },
+        })
+    </script>
+</body>
+</html>
