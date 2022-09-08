@@ -4,24 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>键盘事件</title>
+    <title>一个重要的内置关系</title>
     <script src="../js/vue.js"></script>
 </head>
 <body>
+    <!-- 
+        1.一个重要的内置关系：VueComponent.prototype.__proto__ === Vue.prototype
+        2.为什么要有这个关系：让组件实例对象（vc）可以访问到 Vue 原型上的属性、方法。
+    -->
     <div id="root">
+        <school></school>
 
+        <hello></hello>
     </div>
 
     <script>
         // 阻止 vue 在启动时生成生产提示
         Vue.config.productionTip = false
 
+        // 定义 school 组件
+        const school = Vue.extend({
+            template: `
+                <div>
+                    <h2>学校名称：{{ name }}</h2>
+                    <h2>学校地址：{{ address }}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    name: "北京大学",
+                    address: "北京"
+                }
+            }
+        })
+
+        const hello = Vue.extend({
+            template: `
+                <div>
+                    <h2>Hello World</h2>
+                </div>
+            `,
+            data() {
+                return {
+                }
+            }
+        })
+
+        console.log(school.prototype.__proto__ === Vue.prototype);
+
         new Vue({
             el: "#root",
             data: {
                 
+            },
+            components: {
+                school, hello
             }
         })
-    </script>
+
+        // 定义一个构造函数
+        function Demo() {
+            this.a = 1
+            this.b = 2
+        }
+
+        const d = new Demo()
+
+        // 显示原型属性
+        console.log(Demo.prototype);
+        
+        // 隐式原型属性高 
+        console.log(d.__proto__);
+
+        console.log(Demo.prototype === d.__proto__);
+
+        Demo.prototype.x = 99
+
+        console.log(d.__proto__.x);
+
+
+</script>
 </body>
 </html>

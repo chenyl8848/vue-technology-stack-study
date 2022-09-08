@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>键盘事件</title>
+    <title>组件的嵌套</title>
     <script src="../js/vue.js"></script>
 </head>
 <body>
     <div id="root">
+        <!-- <h2>{{ message }}</h2>
+        
+        <hello></hello>
+
+        <school></school> -->
 
     </div>
 
@@ -16,10 +21,85 @@
         // 阻止 vue 在启动时生成生产提示
         Vue.config.productionTip = false
 
+
+        // 定义学生组件
+        const student = Vue.extend({
+            template: `
+                <div>
+                    <h2>学生名称：{{ name }}</h2>
+                    <h2>学生年龄：{{ age }}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    name: "北京大学",
+                    age: 20
+                }
+            }
+        })
+
+        // 定义组件
+        const school = Vue.extend({
+            name: "MySchool",
+            template: `
+                <div>
+                    <h2>学校名称：{{ name }}</h2>
+                    <h2>学校地址：{{ address }}</h2>
+                    <student></student>
+                </div>
+            `,
+            data() {
+                return {
+                    name: "北京大学",
+                    address: "北京"
+                }
+            },
+            components: {
+                student
+            }
+        })
+
+        // 定义 hello 组件
+        const hello = Vue.extend({
+            template: `
+                <div>
+                    <h2> Hello World </h2>
+                </div>
+            `,
+        })
+
+        const app = ({
+            template: `
+                <div>
+                    <h2>{{ message }}</h2>
+                    
+                    <school></school>
+
+                    <hello></hello>
+                </div>
+            `,
+            data() {
+                return {
+                    message: "欢迎学习 Vue!"
+                }
+            },
+            // 注册组件
+            components: {
+                school, hello   
+            }
+        })
+
         new Vue({
             el: "#root",
-            data: {
-                
+            template: `
+                <app></app>
+            `,
+            // data: {
+            //     message: "欢迎学习 Vue!"
+            // },
+            // 注册组件
+            components: {
+                app
             }
         })
     </script>
