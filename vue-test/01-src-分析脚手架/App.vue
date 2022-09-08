@@ -8,7 +8,7 @@
 
 <script>
   import School from "./components/School.vue";
-  import Student from "./components/Student.vue";
+  import Student from "./components/Studnet.vue";
 
 export default {
   name: "App",
