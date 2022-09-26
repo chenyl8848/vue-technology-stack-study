@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sessionStorage 浏览器本地存储</title>
+</head>
+<body>
+    <div>
+        <h2>sessionStorage 浏览器本地存储</h2>
+        <button onclick="save()">点我保存一个数据</button>
+        <button onclick="read()">点我读取一个数据</button>
+        <button onclick="remove()">点我删除一个数据</button>
+        <button onclick="clearAll()">点我清空数据</button>
+    </div>
+
+    <script type="text/javascript">
+        let person = {name: "张三", age: 19}
+
+        // sessionStorage 保存数据时最终都是 字符串
+        function save() {
+            // 保存字符串
+            sessionStorage.setItem("name", "张三")
+            // 保存数字
+            sessionStorage.setItem("age", 18)
+            // 保存对象数据
+            // sessionStorage.setItem("person", person)
+            sessionStorage.setItem("person", JSON.stringify(person))
+        }
+
+        function read() {
+            // 读取字符串
+            console.log(sessionStorage.getItem("name"))
+            // 读取数字
+            console.log(sessionStorage.getItem("age"))
+            // 读取对象
+            console.log(sessionStorage.getItem("person"))
+            console.log(JSON.parse(sessionStorage.getItem("person")))
+        }
+
+        function remove() {
+            // 删除字符串
+            sessionStorage.removeItem("name")
+            // 移除数字
+            sessionStorage.removeItem("age")
+            // 移除对象
+            sessionStorage.removeItem("person")
+        }
+
+        function clearAll() {
+            console.log("clear...");
+            sessionStorage.clear()
+        }
+    </script>
+</body>
+</html>
