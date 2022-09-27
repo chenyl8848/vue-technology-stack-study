@@ -135,3 +135,56 @@
 
 4. props 传过来的若是对象类型的值，修改对象中的属性时 Vue 不会报错，但不推荐这样做。
 
+## webStorage
+
+1. 存储内容大小一般支持5MB左右（不同浏览器可能还不一样）
+
+2. 浏览器端通过 Window.sessionStorage 和 Window.localStorage 属性来实现本地存储机制。
+
+3. 相关API：
+    1. ```xxxxxStorage.setItem('key', 'value');```
+        该方法接受一个键和值作为参数，会把键值对添加到存储中，如果键名存在，则更新其对应的值。
+    2. ```xxxxxStorage.getItem('person');```
+        ​该方法接受一个键名作为参数，返回键名对应的值。
+    3. ```xxxxxStorage.removeItem('key');```
+        ​该方法接受一个键名作为参数，并把该键名从存储中删除。
+    4. ``` xxxxxStorage.clear()```
+
+        ​该方法会清空存储中的所有数据。
+
+4. 备注：
+    1. SessionStorage 存储的内容会随着浏览器窗口关闭而消失。
+    2. LocalStorage 存储的内容，需要手动清除才会消失。
+    3. ```xxxxxStorage.getItem(xxx)``` 如果 xxx 对应的 value 获取不到，那么 getItem 的返回值是 null。
+    4. ```JSON.parse(null)``` 的结果依然是 null。
+   
+## 组件的自定义事件
+
+1. 一种组件间通信的方式，适用于：<strong style="color:red">子组件 ===> 父组件</strong>
+
+2. 使用场景：A 是父组件，B 是子组件，B 想给 A 传数据，那么就要在 A 中给 B 绑定自定义事件（<span style="color:red">事件的回调在 A 中</span>）。
+
+3. 绑定自定义事件：
+
+    1. 第一种方式，在父组件中：```<Demo @atguigu="test"/>```  或 ```<Demo v-on:atguigu="test"/>```
+
+    2. 第二种方式，在父组件中：
+
+        ```js
+        <Demo ref="demo"/>
+        ......
+        mounted(){
+           this.$refs.xxx.$on('atguigu', this.test)
+        }
+        ```
+
+    3. 若想让自定义事件只能触发一次，可以使用```once```修饰符，或```$once```方法。
+
+4. 触发自定义事件：```this.$emit('atguigu',数据)```		
+
+5. 解绑自定义事件```this.$off('atguigu')```
+
+6. 组件上也可以绑定原生 DOM 事件，需要使用```native```修饰符。
+
+7. 注意：通过```this.$refs.xxx.$on('atguigu',回调)```绑定自定义事件时，回调<span style="color:red">要么配置在methods中</span>，<span style="color:red">要么用箭头函数</span>，否则 this 指向会出问题！
+

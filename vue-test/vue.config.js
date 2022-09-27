@@ -7,7 +7,7 @@ module.exports = defineConfig({
   // pages: {
   //   index: {
   //     // 入口 要么写，要么就 index 也不要写
-  //     entry: "src/peiqi.js"
+  //     entry: "10-src-组件自定义事件/main.js"
   //   }
   // }
 })
