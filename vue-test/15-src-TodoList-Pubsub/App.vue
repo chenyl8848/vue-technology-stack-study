@@ -95,7 +95,7 @@ export default {
     this.$bus.$off("checkTodo")
 
     // 取消订阅
-    pubsub.unscribe(this.pubId)
+    pubsub.unsubscribe(this.pubId)
   }
 };
 </script>
