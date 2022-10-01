@@ -150,14 +150,14 @@
         ​该方法接受一个键名作为参数，并把该键名从存储中删除。
     4. ``` xxxxxStorage.clear()```
 
-        ​该方法会清空存储中的所有数据。
+        该方法会清空存储中的所有数据。
 
 4. 备注：
     1. SessionStorage 存储的内容会随着浏览器窗口关闭而消失。
     2. LocalStorage 存储的内容，需要手动清除才会消失。
     3. ```xxxxxStorage.getItem(xxx)``` 如果 xxx 对应的 value 获取不到，那么 getItem 的返回值是 null。
     4. ```JSON.parse(null)``` 的结果依然是 null。
-   
+
 ## 组件的自定义事件
 
 1. 一种组件间通信的方式，适用于：<strong style="color:red">子组件 ===> 父组件</strong>
@@ -289,11 +289,11 @@
 
 ​	在vue.config.js中添加如下配置：
 
-    ```js
-    devServer:{
-    proxy:"http://localhost:5000"
-    }
-    ```
+```javascript
+devServer:{
+	proxy:"http://localhost:5000"
+}
+```
 
 说明：
 
@@ -305,34 +305,141 @@
 
 ​	编写vue.config.js配置具体代理规则：
 
-    ```js
-    module.exports = {
-        devServer: {
+```javascript
+module.exports = {
+    devServer: {
         proxy: {
-        '/api1': {// 匹配所有以 '/api1'开头的请求路径
-            target: 'http://localhost:5000',// 代理目标的基础路径
-            changeOrigin: true,
-            pathRewrite: {'^/api1': ''}
-        },
-        '/api2': {// 匹配所有以 '/api2'开头的请求路径
-            target: 'http://localhost:5001',// 代理目标的基础路径
-            changeOrigin: true,
-            pathRewrite: {'^/api2': ''}
+            '/api1': {
+                // 匹配所有以 '/api1'开头的请求路径
+                target: 'http://localhost:5000',// 代理目标的基础路径
+                changeOrigin: true,
+                pathRewrite: {'^/api1': ''}
+            },
+            '/api2': {
+                // 匹配所有以 '/api2'开头的请求路径
+                target: 'http://localhost:5001',// 代理目标的基础路径
+                changeOrigin: true,
+                pathRewrite: {'^/api2': ''}
+            }
         }
-        }
-    }
-    }
-    /*
-    changeOrigin设置为true时，服务器收到的请求头中的host为：localhost:5000
-    changeOrigin设置为false时，服务器收到的请求头中的host为：localhost:8080
-    changeOrigin默认值为true
-    */
+	}
+}
+/*
+changeOrigin设置为true时，服务器收到的请求头中的host为：localhost:5000
+changeOrigin设置为false时，服务器收到的请求头中的host为：localhost:8080
+changeOrigin默认值为true
+*/
 ```
-
 说明：
 
 1. 优点：可以配置多个代理，且可以灵活的控制请求是否走代理。
 2. 缺点：配置略微繁琐，请求资源时必须加前缀。
+
+## 插槽
+
+1. 作用：让父组件可以向子组件指定位置插入html结构，也是一种组件间通信的方式，适用于 <strong style="color:red">父组件 ===> 子组件</strong> 。
+
+2. 分类：默认插槽、具名插槽、作用域插槽
+
+3. 使用方式：
+
+   1. 默认插槽：
+
+      父组件中：
+      
+      ```vue
+      <Category>
+          <div>html结构1</div>
+      </Category>
+      ```
+      
+      子组件中：
+      
+      ```vue
+      <template>
+      	<div>
+              <!-- 定义插槽 -->
+              <slot>插槽默认内容...</slot>
+          </div>
+      </template>
+      ```
+      
+   2. 具名插槽：
+   
+      父组件中：
+   
+      ```vue
+      <Category>
+          <template slot="center">
+      		<div>html结构1</div>
+          </template>
+      
+          <template v-slot:footer>
+      		<div>html结构2</div>
+          </template>
+      </Category>
+      ```
+   
+        子组件中：
+   
+      ```vue
+      <template>
+      	<div>
+          	<!-- 定义插槽 -->
+          	<slot name="center">插槽默认内容...</slot>
+          	<slot name="footer">插槽默认内容...</slot>
+          </div>
+      </template>
+      ```
+   
+   3. 作用域插槽：
+   
+      1. 理解：<span style="color:red">数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</span>（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定）
+   
+      2. 具体编码：
+   
+         父组件中：
+   
+         ```vue
+         <Category>
+             <template scope="scopeData">
+         <!-- 生成的是ul列表 -->
+         <ul>
+             <li v-for="g in scopeData.games" :key="g">{{g}}</li>
+                 </ul>
+             </template>
+         </Category>
+         
+         <Category>
+             <template slot-scope="scopeData">
+         <!-- 生成的是h4标题 -->
+         <h4 v-for="g in scopeData.games" :key="g">{{g}}</h4>
+             </template>
+         </Category>
+         ```
+   
+         子组件中：
+   
+         ```vue
+         <template>
+         <div>
+             <slot :games="games"></slot>
+             </div>
+         </template>
+         
+         <script>
+             export default {
+                 name:'Category',
+                 props:['title'],
+                 //数据在子组件自身
+                 data() {
+                     return {
+                         games:['红色警戒','穿越火线','劲舞团','超级玛丽']
+                     }
+                 },
+             }
+         </script>
+         ```
 
 
 
