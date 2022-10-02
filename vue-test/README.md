@@ -541,5 +541,25 @@ changeOrigin默认值为true
 
    >  备注：若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写```dispatch```，直接编写```commit```
 
+### 5.getters的使用
 
+1. 概念：当 state 中的数据需要经过加工后再使用时，可以使用 getters 加工。
 
+2. 在```store.js```中追加```getters```配置
+
+   ```js
+   // 准备 getters —— 用于对 state 中的数据进行加工
+   const getters = {
+   	bigSum(state){
+   		return state.sum * 10
+   	}
+   }
+   
+   // 创建并暴露store
+   export default new Vuex.Store({
+   	......
+   	getters
+   })
+   ```
+
+3. 组件中读取数据：```$store.getters.bigSum```
