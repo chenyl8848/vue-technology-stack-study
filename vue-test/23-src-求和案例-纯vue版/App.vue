@@ -10,9 +10,6 @@ export default {
   name: "App",
   components: { Count },
   methods: {},
-  mounted() {
-    console.log(this, "App");
-  },
 };
 </script>
 
