@@ -34,12 +34,13 @@ const mutations = {
         console.log("mutations 中 decrement 被调用了", state, value);
         state.sum -= value
     },
-
 }
 
 // 准备 state —— 用于存储数据
 const state = {
-    sum: 0
+    sum: 0,
+    school: '北京大学',
+    subject: 'Vue'
 }
 
 // 准备 getters —— 用于对 state 中的数据进行加工

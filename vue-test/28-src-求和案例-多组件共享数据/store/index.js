@@ -9,6 +9,7 @@ Vue.use(Vuex)
 
 // 准备 actions —— 用于响应组件中的动作
 const actions = {
+
     incrementOdd(context, value) {
         console.log("actions 中 incrementOdd 被调用了", context, value);
         if (context.state.sum % 2) {
@@ -33,13 +34,15 @@ const mutations = {
     decrement(state, value) {
         console.log("mutations 中 decrement 被调用了", state, value);
         state.sum -= value
-    },
+    }
 
 }
 
 // 准备 state —— 用于存储数据
 const state = {
-    sum: 0
+    sum: 0,
+    school: '北京大学',
+    subject: 'Vue'
 }
 
 // 准备 getters —— 用于对 state 中的数据进行加工

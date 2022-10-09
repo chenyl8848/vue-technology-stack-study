@@ -9,7 +9,7 @@ module.exports = defineConfig({
   // pages: {
   //   index: {
   //     // 入口 要么写，要么就 index 也不要写
-  //     entry: "10-src-组件自定义事件/main.js"
+  //     entry: "24-src-求和案例-vuex版/main.js"
   //   }
   // }
 
