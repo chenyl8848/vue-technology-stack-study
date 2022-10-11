@@ -18,8 +18,6 @@
         }"
         >{{ message.title }}</router-link
       >
-      <button @click="pushShow(message)">push 查看</button>
-      <button @click="replaceShow(message)">replace 查看</button>
     </ul>
     <hr />
     <router-view></router-view>
@@ -37,29 +35,6 @@ export default {
         { id: "003", title: "消息003" },
       ],
     };
-  },
-  methods: {
-    pushShow(message) {
-      this.$router.push({
-        name: "xiangqing",
-        query: {
-          id: message.id,
-          title: message.title,
-        },
-      });
-    },
-    replaceShow(message) {
-      this.$router.replace({
-        name: "xiangqing",
-        query: {
-          id: message.id,
-          title: message.title,
-        },
-      });
-    },
-  },
-  beforeDestroy() {
-    console.log("Message 组件即将被销毁...");
   },
 };
 </script>

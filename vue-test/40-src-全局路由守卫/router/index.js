@@ -26,35 +26,19 @@ const router = new Router({
             title: '关于'
         }
     }, {
-        name: 'zhuye',
         path: '/home',
         component: Home,
         meta: {
             title: '主页',
         },
         children: [{
-            name: 'xinwen',
             path: 'news',
             component: News,
             meta: {
                 isAuth: true,
                 title: '新闻'
-            },
-            // 独享路由守卫
-            // beforeEnter: (to, from, next) => {
-            //     console.log("独显路由守卫", to, from);
-            //     if (to.meta.isAuth) {
-            //         if (localStorage.getItem('token') === 'admin') {
-            //             next()
-            //         } else {
-            //             alert("No auth")
-            //         }
-            //     } else {
-            //         next()
-            //     }
-            // }
+            }
         }, {
-            name: 'xiaoxi',
             path: 'message',
             component: Message,
             meta: {
@@ -91,18 +75,18 @@ const router = new Router({
 })
 
 // 全局前置路由守卫——初始化的时候别调用、每次路由切换之前被调用
-// router.beforeEach((to, from, next) => {
-//     console.log("前置路由守卫", to, from);
-//     if (to.meta.isAuth) {
-//         if (localStorage.getItem('token') === 'admin') {
-//             next()
-//         } else {
-//             alert("no auth")
-//         }
-//     } else {
-//         next()
-//     }
-// })
+router.beforeEach((to, from, next) => {
+    console.log("前置路由守卫", to, from);
+    if (to.meta.isAuth) {
+        if (localStorage.getItem('token') === 'admin') {
+            next()
+        } else {
+            alert("no auth")
+        }
+    } else {
+        next()
+    }
+})
 
 // 全局后置路由守卫——初始化的时候被调用、每次路由切换之后被调用
 router.afterEach((to, from) => {

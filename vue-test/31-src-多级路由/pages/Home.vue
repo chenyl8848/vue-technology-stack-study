@@ -5,7 +5,6 @@
       <ul class="nav nav-tabs">
         <li>
           <router-link
-            replace
             class="list-group-item"
             active-class="active"
             to="/home/news"
@@ -14,7 +13,6 @@
         </li>
         <li>
           <router-link
-            replace
             class="list-group-item"
             active-class="active"
             to="/home/message"
@@ -22,15 +20,7 @@
           >
         </li>
       </ul>
-      <!-- 缓存一个路由组件 include 中的值必须是组件名-->
-      <!-- <keep-alive include="News">
-        <router-view></router-view>
-      </keep-alive> -->
-
-      <!-- 缓存多个组件 -->
-      <keep-alive :include="['News', 'Message']">
-        <router-view></router-view>
-      </keep-alive>
+      <router-view></router-view>
     </div>
   </div>
 </template>
