@@ -17,6 +17,7 @@ Vue.use(Router)
 
 // 创建并暴露一个路由器
 const router = new Router({
+    mode: 'hash',
     // 配置路由
     routes: [{
         name: 'guanyu',
