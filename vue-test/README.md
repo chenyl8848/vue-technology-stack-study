@@ -22,20 +22,20 @@
 
 ## 关于不同版本的Vue
 
-1. vue.js与vue.runtime.xxx.js的区别：
-    1. vue.js是完整版的Vue，包含：核心功能 + 模板解析器。
-    2. vue.runtime.xxx.js是运行版的Vue，只包含：核心功能；没有模板解析器。
-2. 因为vue.runtime.xxx.js没有模板解析器，所以不能使用template这个配置项，需要使用render函数接收到的createElement函数去指定具体内容。
+1. `vue.js` 与 `vue.runtime.xxx.js` 的区别：
+    1. `vue.js` 是完整版的 `Vue`，包含：核心功能 + 模板解析器。
+    2. `vue.runtime.xxx.js` 是运行版的 `Vue`，只包含：核心功能；没有模板解析器。
+2. 因为 `vue.runtime.xxx.js` 没有模板解析器，所以不能使用 `template` 这个配置项，需要使用 `render` 函数接收到的 `createElement` 函数去指定具体内容。
 
 ## vue.config.js配置文件
 
 1. 使用 `vue inspect > output.js` 可以查看到Vue脚手架的默认配置。
-2. 使用vue.config.js可以对脚手架进行个性化定制，详情见：https://cli.vuejs.org/zh
+2. 使用 `vue.config.js` 可以对脚手架进行个性化定制，[详情](https://cli.vuejs.org/zh)
 
 ## ref属性
 
-1. 被用来给元素或子组件注册引用信息（id的替代者）
-2. 应用在html标签上获取的是真实DOM元素，应用在组件标签上是组件实例对象（vc）
+1. 被用来给元素或子组件注册引用信息（id 的替代者）
+2. 应用在 `html` 标签上获取的是真实 `DOM` 元素，应用在组件标签上是组件实例对象（`vc`）
 3. 使用方式：
     1. 打标识：```<h1 ref="xxx">.....</h1>``` 或 ```<School ref="xxx"></School>```
     2. 获取：```this.$refs.xxx```
@@ -64,7 +64,7 @@
         }
         ```
 
-    > 备注：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。
+    > 备注：`props` 是只读的，`Vue` 底层会监测你对 `props` 的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制 `props` 的内容到 `data` 中一份，然后去修改 `data` 中的数据。
 
 ## mixin(混入)
 
@@ -88,9 +88,9 @@
 
 ## 插件
 
-1. 功能：用于增强Vue
+1. 功能：用于增强 `Vue`
 
-2. 本质：包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。
+2. 本质：包含 `install` 方法的一个对象，`install` 的第一个参数是 `Vue`，第二个以后的参数是插件使用者传递的数据。
 
 3. 定义插件：
 
@@ -121,42 +121,42 @@
 ## 总结TodoList案例
 
 1. 组件化编码流程：
-   1. 拆分静态组件：组件要按照功能点拆分，命名不要与 html 元素冲突。
+   1. 拆分静态组件：组件要按照功能点拆分，命名不要与 `html` 元素冲突。
    2. 实现动态组件：考虑好数据的存放位置，数据是一个组件在用，还是一些组件在用：
         1. 一个组件在用：放在组件自身即可。
         2. 一些组件在用：放在他们共同的父组件上（<span style="color:red">状态提升</span>）。
         3. 实现交互：从绑定事件开始。
 
-2. props 适用于：
+2. `props` 适用于：
    1. 父组件 ==> 子组件 通信
    2. 子组件 ==> 父组件 通信（要求父先给子一个函数）
    
-3. 使用 v-model 时要切记：v-model 绑定的值不能是 props 传过来的值，因为 props 是不可以修改的！
+3. 使用 `v-model` 时要切记：`v-model` 绑定的值不能是 `props` 传过来的值，因为 `props` 是不可以修改的！
 
-4. props 传过来的若是对象类型的值，修改对象中的属性时 Vue 不会报错，但不推荐这样做。
+4. `props` 传过来的若是对象类型的值，修改对象中的属性时 `Vue` 不会报错，但不推荐这样做。
 
 ## webStorage
 
-1. 存储内容大小一般支持5MB左右（不同浏览器可能还不一样）
+1. 存储内容大小一般支持 5MB 左右（不同浏览器可能还不一样）
 
-2. 浏览器端通过 Window.sessionStorage 和 Window.localStorage 属性来实现本地存储机制。
+2. 浏览器端通过 `Window.sessionStorage` 和 `Window.localStorage` 属性来实现本地存储机制
 
 3. 相关API：
     1. ```xxxxxStorage.setItem('key', 'value');```
-        该方法接受一个键和值作为参数，会把键值对添加到存储中，如果键名存在，则更新其对应的值。
+        该方法接受一个键和值作为参数，会把键值对添加到存储中，如果键名存在，则更新其对应的值
     2. ```xxxxxStorage.getItem('person');```
-        ​该方法接受一个键名作为参数，返回键名对应的值。
+        ​该方法接受一个键名作为参数，返回键名对应的值
     3. ```xxxxxStorage.removeItem('key');```
-        ​该方法接受一个键名作为参数，并把该键名从存储中删除。
+        ​该方法接受一个键名作为参数，并把该键名从存储中删除
     4. ``` xxxxxStorage.clear()```
 
-        该方法会清空存储中的所有数据。
+        该方法会清空存储中的所有数据
 
 4. 备注：
-    1. SessionStorage 存储的内容会随着浏览器窗口关闭而消失。
-    2. LocalStorage 存储的内容，需要手动清除才会消失。
-    3. ```xxxxxStorage.getItem(xxx)``` 如果 xxx 对应的 value 获取不到，那么 getItem 的返回值是 null。
-    4. ```JSON.parse(null)``` 的结果依然是 null。
+    1. `SessionStorage` 存储的内容会随着浏览器窗口关闭而消失
+    2. `LocalStorage` 存储的内容，需要手动清除才会消失
+    3. ```xxxxxStorage.getItem(xxx)``` 如果 xxx 对应的 `value` 获取不到，那么 `getItem` 的返回值是 `null`
+    4. ```JSON.parse(null)``` 的结果依然是 `null`
 
 ## 组件的自定义事件
 
@@ -166,7 +166,7 @@
 
 3. 绑定自定义事件：
 
-    1. 第一种方式，在父组件中：```<Demo @atguigu="test"/>```  或 ```<Demo v-on:atguigu="test"/>```
+    1. 第一种方式，在父组件中：```<Demo @helloWorld="test"/>```  或 ```<Demo v-on:helloWorld="test"/>```
 
     2. 第二种方式，在父组件中：
 
@@ -174,19 +174,19 @@
         <Demo ref="demo"/>
         ......
         mounted(){
-           this.$refs.xxx.$on('atguigu', this.test)
+           this.$refs.xxx.$on('helloWorld', this.test)
         }
         ```
 
-    3. 若想让自定义事件只能触发一次，可以使用```once```修饰符，或```$once```方法。
+    3. 若想让自定义事件只能触发一次，可以使用 ```once``` 修饰符，或 ```$once``` 方法。
 
-4. 触发自定义事件：```this.$emit('atguigu',数据)```		
+4. 触发自定义事件：```this.$emit('helloWorld',数据)```		
 
-5. 解绑自定义事件```this.$off('atguigu')```
+5. 解绑自定义事件```this.$off('helloWorld')```
 
-6. 组件上也可以绑定原生 DOM 事件，需要使用```native```修饰符。
+6. 组件上也可以绑定原生 `DOM` 事件，需要使用 ```native``` 修饰符。
 
-7. 注意：通过```this.$refs.xxx.$on('atguigu',回调)```绑定自定义事件时，回调<span style="color:red">要么配置在methods中</span>，<span style="color:red">要么用箭头函数</span>，否则 this 指向会出问题！
+7. 注意：通过 ```this.$refs.xxx.$on('helloWorld',回调)``` 绑定自定义事件时，回调<span style="color:red">要么配置在methods中</span>，<span style="color:red">要么用箭头函数</span>，否则 `this` 指向会出问题！
 
 ## 全局事件总线（GlobalEventBus）
 
@@ -206,7 +206,7 @@
 
 3. 使用事件总线：
 
-   1. 接收数据：A 组件想接收数据，则在 A 组件中给 $bus 绑定自定义事件，事件的<span style="color:red">回调留在A组件自身。</span>
+   1. 接收数据：A 组件想接收数据，则在 A 组件中给 `$bus` 绑定自定义事件，事件的<span style="color:red">回调留在 A 组件自身。</span>
 
       ```js
       methods(){
@@ -220,11 +220,11 @@
 
    2. 提供数据：```this.$bus.$emit('xxxx',数据)```
 
-4. 最好在 beforeDestroy 钩子中，用 $off 去解绑<span style="color:red">当前组件所用到的</span>事件。
+4. 最好在 `beforeDestroy` 钩子中，用 `$off` 去解绑<span style="color:red">当前组件所用到的</span>事件。
 
 ## 消息订阅与发布（pubsub）
 
-1.   一种组件间通信的方式，适用于<span style="color:red">任意组件间通信</span>。
+1. 一种组件间通信的方式，适用于<span style="color:red">任意组件间通信</span>。
 
 2. 使用步骤：
 
@@ -246,17 +246,17 @@
 
    4. 提供数据：```pubsub.publish('xxx',数据)```
 
-   5. 最好在beforeDestroy钩子中，用```PubSub.unsubscribe(pid)```去<span style="color:red">取消订阅。</span>
+   5. 最好在 `beforeDestroy` 钩子中，用 ```PubSub.unsubscribe(pid)``` 去<span style="color:red">取消订阅。</span>
 	
 ## nextTick
 
 1. 语法：```this.$nextTick(回调函数)```
-2. 作用：在下一次 DOM 更新结束后执行其指定的回调。
-3. 什么时候用：当改变数据后，要基于更新后的新DOM进行某些操作时，要在nextTick所指定的回调函数中执行。
+2. 作用：在下一次 `DOM` 更新结束后执行其指定的回调
+3. 什么时候用：当改变数据后，要基于更新后的新 `DOM` 进行某些操作时，要在 `nextTick` 所指定的回调函数中执行
 
 ## Vue封装的过度与动画
 
-1. 作用：在插入、更新或移除 DOM元素时，在合适的时候给元素添加样式类名。
+1. 作用：在插入、更新或移除 `DOM` 元素时，在合适的时候给元素添加样式类名
 
 2. 图示：<img src="https://img04.sogoucdn.com/app/a/100520146/5990c1dff7dc7a8fb3b34b4462bd0105" style="width:60%" />
 
@@ -265,15 +265,15 @@
    1. 准备好样式：
 
       - 元素进入的样式：
-        1. v-enter：进入的起点
-        2. v-enter-active：进入过程中
-        3. v-enter-to：进入的终点
+        1. `v-enter`：进入的起点
+        2. `v-enter-active`：进入过程中
+        3. `v-enter-to`：进入的终点
       - 元素离开的样式：
-        1. v-leave：离开的起点
-        2. v-leave-active：离开过程中
-        3. v-leave-to：离开的终点
+        1. `v-leave`：离开的起点
+        2. `v-leave-active`：离开过程中
+        3. `v-leave-to`：离开的终点
 
-   2. 使用```<transition>```包裹要过度的元素，并配置name属性：
+   2. 使用```<transition>```包裹要过度的元素，并配置 `name` 属性：
 
       ```vue
       <transition name="hello">
@@ -281,13 +281,13 @@
       </transition>
       ```
 
-   3. 备注：若有多个元素需要过度，则需要使用：```<transition-group>```，且每个元素都要指定```key```值。
+   3. 备注：若有多个元素需要过度，则需要使用：```<transition-group>```，且每个元素都要指定 ```key``` 值
 
 ## vue脚手架配置代理
 
 ### 方法一
 
-​	在vue.config.js中添加如下配置：
+​在 `vue.config.js` 中添加如下配置：
 
 ```javascript
 devServer:{
@@ -303,7 +303,7 @@ devServer:{
 
 ### 方法二
 
-​	编写vue.config.js配置具体代理规则：
+​编写 `vue.config.js` 配置具体代理规则：
 
 ```javascript
 module.exports = {
@@ -337,7 +337,7 @@ changeOrigin默认值为true
 
 ## 插槽
 
-1. 作用：让父组件可以向子组件指定位置插入html结构，也是一种组件间通信的方式，适用于 <strong style="color:red">父组件 ===> 子组件</strong> 。
+1. 作用：让父组件可以向子组件指定位置插入 `html` 结构，也是一种组件间通信的方式，适用于 <strong style="color:red">父组件 ===> 子组件</strong> 。
 
 2. 分类：默认插槽、具名插槽、作用域插槽
 
@@ -380,7 +380,7 @@ changeOrigin默认值为true
       </Category>
       ```
    
-        子组件中：
+      子组件中：
    
       ```vue
       <template>
@@ -394,7 +394,7 @@ changeOrigin默认值为true
    
    3. 作用域插槽：
    
-      1. 理解：<span style="color:red">数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</span>（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定）
+      1. 理解：<span style="color:red">数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</span>（`games` 数据在 `Category` 组件中，但使用数据所遍历出来的结构由 `App` 组件决定）
    
       2. 具体编码：
    
@@ -494,7 +494,7 @@ changeOrigin默认值为true
    })
    ```
 
-###    4.基本使用
+### 4.基本使用
 
 1. 初始化数据、配置```actions```、配置```mutations```，操作文件```store.js```
 
