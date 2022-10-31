@@ -1,242 +1,31 @@
-- [ Vue技术栈](#head1)
-	- [1.`Vue` 核心](#head2)
-		- [1.1 `Vue` 简介](#head3)
-			- [1.1.1 官网](#head4)
-			- [1.1.2 介绍与描述](#head5)
-			- [1.1.3 Vue的特点](#head6)
-			- [1.1.4 与其它JS框架的关联](#head7)
-			- [1.1.5 Vue 周边库](#head8)
-		- [1.2 初识 Vue](#head9)
-		- [1.3 模板语法](#head10)
-			- [1.3.1 模板的理解](#head11)
-			- [1.3.2 插值语法](#head12)
-			- [1.3.3 指令语法](#head13)
-			- [1.3.4 示例代码](#head14)
-		- [1.4 数据绑定](#head15)
-			- [1.4.1 单向数据绑定](#head16)
-			- [1.4.2 双向数据绑定](#head17)
-			- [1.4.3 示例代码](#head18)
-		- [1.5 MVVM模型](#head19)
-		- [1.6 事件处理](#head20)
-			- [1.6.1 绑定监听](#head21)
-			- [1.6.2 事件修饰符](#head22)
-			- [1.6.3 按键修饰符](#head23)
-		- [1.7 计算属性与监视属性](#head24)
-			- [1.7.1 计算属性 `computed`](#head25)
-			- [1.7.2 监视属性 `watch`](#head26)
-		- [1.8 `class` 与 `style` 绑定](#head27)
-			- [1.8.1 理解](#head28)
-			- [1.8.2 `class` 绑定](#head29)
-			- [1.8.3 `style` 绑定](#head30)
-			- [1.8.4 示例代码](#head31)
-		- [1.9 条件渲染](#head32)
-			- [1.9.1 条件渲染指令](#head33)
-			- [1.9.2 比较 `v-if` 与 `v-show`](#head34)
-			- [1.9.3 示例代码](#head35)
-		- [1.10 列表渲染](#head36)
-			- [1.10.1 列表显示指令](#head37)
-			- [1.10.2 示例代码](#head38)
-		- [1.11 收集表单数据](#head39)
-		- [1.12 过滤器](#head40)
-			- [1.12.1 理解过滤器](#head41)
-			- [1.12.2 示例代码](#head42)
-		- [1.13 内置指令与自定义指令](#head43)
-			- [1.13.1 常用内置指令](#head44)
-			- [1.13.2 自定义指令](#head45)
-		- [1.14 Vue实例生命周期](#head46)
-			- [1.14.1 生命周期流程图](#head47)
-			- [1.14.2 vue生命周期分析](#head48)
-			- [1.14.3 示例代码](#head49)
-			- [1.14.4 常用的生命周期方法](#head50)
-	- [2. `Vue` 组件化编程](#head51)
-		- [2.1 模块与组件、模块化与组件化](#head52)
-			- [2.1.1 模块](#head53)
-			- [2.1.2 组件](#head54)
-			- [2.1.3 模块化](#head55)
-			- [2.1.4 组件化](#head56)
-		- [2.2 非单文件组件](#head57)
-			- [2.2.1 说明](#head58)
-			- [2.2.2 基本使用](#head59)
-			- [2.2.3 注意事项](#head60)
-			- [2.2.4 组件的嵌套](#head61)
-			- [2.2.5 VueComponent](#head62)
-			- [2.2.6 内置关系](#head63)
-		- [2.3 单文件组件](#head64)
-			- [2.3.1 一个.vue文件的组成( 3 个部分)](#head65)
-			- [2.3.2 基本使用](#head66)
-	- [3. 使用 `Vue` 脚手架](#head67)
-		- [3.1 初始化脚手架](#head68)
-			- [3.1.1 说明](#head69)
-			- [3.1.2 具体步骤](#head70)
-			- [3.1.3 模板项目的结构](#head71)
-			- [3.1.4 不同版本的 `Vue`](#head72)
-			- [3.1.5 `vue.config.js` 配置文件](#head73)
-		- [3.2 `ref`](#head74)
-			- [3.2.1 使用说明](#head75)
-		- [3.3 `props`](#head76)
-			- [3.3.1 使用说明](#head77)
-			- [3.3.2 代码示例](#head78)
-		- [3.4 混入](#head79)
-			- [3.4.1 使用说明](#head80)
-			- [3.4.2 代码示例](#head81)
-		- [3.5 插件](#head82)
-			- [3.5.1 使用说明](#head83)
-			- [3.5.2 代码示例](#head84)
-		- [3.6 `scoped` 样式](#head85)
-		- [3.7 组件化编码流程](#head86)
-		- [3.8 `webStorage`](#head87)
-			- [3.8.1 使用说明](#head88)
-			- [3.8.2 代码示例](#head89)
-		- [3.9 组件的自定义事件](#head90)
-			- [3.9.1 使用说明](#head91)
-			- [3.9.2 代码示例](#head92)
-		- [3.10 全局事件总线](#head93)
-			- [3.10.1 使用说明](#head94)
-			- [3.10.2 代码示例](#head95)
-		- [3.11 消息订阅与发布](#head96)
-			- [3.11.1 说明使用](#head97)
-			- [3.11.2 代码示例](#head98)
-		- [3.12 nextTick](#head99)
-		- [3.13 过度与动画](#head100)
-			- [3.13.1 使用说明](#head101)
-			- [3.13.2 代码示例](#head102)
-		- [3.14 插槽](#head103)
-			- [3.14.1 使用说明](#head104)
-			- [3.14.2 默认插槽](#head105)
-			- [3.14.3 具名插槽](#head106)
-			- [3.14.4 作用域插槽](#head107)
-	- [4. `Vue` 中的 `Ajax`](#head108)
-		- [4.1 使用代理服务器](#head109)
-			- [4.1.1 方式一](#head110)
-			- [4.1.2 方式二](#head111)
-		- [4.2 `Vue` 项目中常用的 2 个 `Ajax` 库](#head112)
-			- [4.2.1 `Axios`](#head113)
-			- [4.2.2 `vue-resource`](#head114)
-	- [5. `Vuex`](#head115)
-		- [5.1 理解 `Vuex`](#head116)
-			- [5.1.1 `Vuex` 是什么](#head117)
-			- [5.1.2 什么时候使用 `Vuex`](#head118)
-			- [5.1.3 `Vuex` 工作原理图](#head119)
-		- [5.2 搭建 `Vuex` 环境与基本使用](#head120)
-			- [5.2.1 环境 `Vuex` 搭建](#head121)
-			- [5.2.2 基本使用](#head122)
-		- [5.3 `Vuex` 核心概念和API](#head123)
-			- [5.3.1 `state`](#head124)
-			- [5.3.2 `actions`](#head125)
-			- [5.3.3 `mutations`](#head126)
-			- [5.3.4 `getters`](#head127)
-		- [5.4 四个 `map` 方法的使用](#head128)
-			- [5.4.1 `mapState` 方法](#head129)
-			- [5.4.2 `mapGetters` 方法](#head130)
-			- [5.4.3 `mapActions` 方法](#head131)
-			- [5.4.4 `mapMutations` 方法](#head132)
-		- [5.5 模块化+命名空间](#head133)
-	- [6. `vue-router`](#head134)
-		- [6.1 相关理解](#head135)
-			- [6.1.1 `vue-router` 的理解](#head136)
-			- [6.1.2 对 `SPA` 应用的理解](#head137)
-			- [6.1.3 路由的理解](#head138)
-		- [6.2 基本路由](#head139)
-			- [6.2.1 安装与使用](#head140)
-			- [6.2.2 总结](#head141)
-		- [6.3 嵌套（多级）路由](#head142)
-		- [6.4 路由传参](#head143)
-			- [6.4.1 路由的 `query` 参数](#head144)
-			- [6.4.2 命名路由](#head145)
-			- [6.4.3 路由的 `params` 参数](#head146)
-			- [6.4.4 路由的 `props` 配置](#head147)
-			- [6.4.5 `<router-link>` 的 `replace` 属性](#head148)
-		- [6.5 编程式路由导航](#head149)
-	- [7. Vue UI组件库](#head150)
-		- [7.1 移动端常用UI组件库](#head151)
-		- [7.2 PC端常用UI组件库](#head152)
-	- [8. `Vue3` 快速上手](#head153)
-		- [8.1 `Vue3` 简介](#head154)
-		- [8.2 `Vue3` 带来了什么](#head155)
-	- [9. 创建 `Vue3` 工程](#head156)
-		- [9.1 使用 `vue-cli` 创建](#head157)
-		- [9.2 使用 `vite` 创建](#head158)
-	- [10. 常用 `Composition API`](#head159)
-		- [10.1 拉开序幕的 `setup`](#head160)
-			- [10.1.1 使用说明](#head161)
-			- [10.1.2 代码示例](#head162)
-		- [10.2 `ref` 函数](#head163)
-			- [10.2.1 使用说明](#head164)
-			- [10.2.2 代码示例](#head165)
-		- [10.3 `reactive` 函数](#head166)
-			- [10.3.1 使用说明](#head167)
-			- [10.3.2 代码示例](#head168)
-		- [10.4 Vue 中的响应式原理](#head169)
-			- [10.4.1 `Vue2.x` 的响应式](#head170)
-			- [10.4.2 `Vue3.0` 的响应式](#head171)
-		- [10.5 `reactive` 对比 `ref`](#head172)
-		- [10.6 `setup` 的两个注意点](#head173)
-			- [10.6.1 使用说明](#head174)
-			- [10.6.2 代码示例](#head175)
-		- [10.7 计算属性与监视](#head176)
-			- [10.7.1 `computed` 函数](#head177)
-			- [10.7.2 `watch` 函数](#head178)
-			- [10.7.3 `watchEffect` 函数](#head179)
-		- [10.8 生命周期](#head180)
-		- [10.8.1 使用说明](#head181)
-		- [10.8.2 代码示例](#head182)
-		- [10.9 自定义 `hook` 函数](#head183)
-		- [10.9.1 使用说明](#head184)
-			- [10.9.2 代码示例](#head185)
-		- [10.10 `toRef`](#head186)
-			- [10.10.1 使用说明](#head187)
-			- [10.10.2 代码示例](#head188)
-	- [11. 其它 `Composition API`](#head189)
-		- [11.1 `shallowReactive` 与 `shallowRef`](#head190)
-		- [11.2 `readonly` 与 `shallowReadonly`](#head191)
-		- [11.3 `toRaw` 与 `markRaw`](#head192)
-			- [11.3.1 使用说明](#head193)
-			- [11.3.2 代码示例](#head194)
-		- [11.4 `customRef`](#head195)
-		- [11.5 `provide` 与 `inject`](#head196)
-			- [11.5.1 使用介绍](#head197)
-			- [11.5.2 代码示例](#head198)
-		- [11.6 响应式数据的判断](#head199)
-			- [11.6.1 使用说明](#head200)
-			- [11.6.2 代码示例](#head201)
-	- [12. `Composition API` 的优势](#head202)
-		- [12.1 `Options API` 存在的问题](#head203)
-		- [12.2 `Composition API` 的优势](#head204)
-	- [13. 新的组件](#head205)
-		- [13.1 `Fragment`](#head206)
-		- [13.2 `Teleport`](#head207)
-		- [13.3 `Suspense`](#head208)
-	- [14. 其他](#head209)
-		- [14.1 全局 `API` 的转移](#head210)
-		- [14.2 其他改变](#head211)
-# <span id="head1"> Vue技术栈</span>
+# Vue技术栈
 
-## <span id="head2">1.`Vue` 核心</span>
+## 1.`Vue` 核心
 
-### <span id="head3">1.1 `Vue` 简介</span>
+### 1.1 `Vue` 简介
 
-#### <span id="head4">1.1.1 官网</span>
+#### 1.1.1 官网
 
 - [英文官网](https://vuejs.org)
 - [中文官网](https://cn.vuejs.org)
 
-#### <span id="head5">1.1.2 介绍与描述</span>
+#### 1.1.2 介绍与描述
 
 1. 动态构建用户界面的 渐进式 `JavaScript` 框架
 2. 作者:尤雨溪
 
-#### <span id="head6">1.1.3 Vue的特点</span>
+#### 1.1.3 Vue的特点
 
 - 遵循 `MVVM` 模式
 - 编码简洁，体积小，运行效率高，适合移动/PC端开发
 - 它本身只关注UI，也可以引入其它第三方库开发项目
 
-#### <span id="head7">1.1.4 与其它JS框架的关联</span>
+#### 1.1.4 与其它JS框架的关联
 
 1. 借鉴 `Angular` 的**模板和数据绑定技术**
 2. 借鉴 `React` 的**组件化**和虚拟 `DOM` 技术
 
-#### <span id="head8">1.1.5 Vue 周边库</span>
+#### 1.1.5 Vue 周边库
 
 1. `Vue CLI`: 项目脚手架
 
@@ -252,7 +41,7 @@
 
    ......
 
-### <span id="head9">1.2 初识 Vue</span>
+### 1.2 初识 Vue
 
 ```html
 <!DOCTYPE html>
@@ -311,9 +100,9 @@
 </html>
 ```
 
-### <span id="head10">1.3 模板语法</span>
+### 1.3 模板语法
 
-#### <span id="head11">1.3.1 模板的理解</span>
+#### 1.3.1 模板的理解
 
 `html` 中包含了一些 `js` 语法代码，语法分为两种，分别为：
 
@@ -321,18 +110,18 @@
 2. 指令（以v-开头）
 
 
-#### <span id="head12">1.3.2 插值语法</span>
+#### 1.3.2 插值语法
 
 1. 功能：用于解析标签体内容
 2. 语法：`{{xxx}}`，xxxx 会作为 `js` 表达式解析
 
-#### <span id="head13">1.3.3 指令语法</span>
+#### 1.3.3 指令语法
 
 1. 功能：解析标签属性、解析标签体内容、绑定事件
 2. 举例：`v-bind:href='xxxx'`，`xxxx` 会作为 `js` 表达式被解析
 3. 说明：`Vue` 中有有很多的指令，此处只是用 `v-bind` 举个例子
 
-#### <span id="head14">1.3.4 示例代码</span>
+#### 1.3.4 示例代码
 
 ```html
 <!DOCTYPE html>
@@ -385,20 +174,20 @@
 </html>
 ```
 
-### <span id="head15">1.4 数据绑定</span>
+### 1.4 数据绑定
 
 
-#### <span id="head16">1.4.1 单向数据绑定</span>
+#### 1.4.1 单向数据绑定
 
 1. 语法：`v-bind:href="xxx"` 或简写为 `:href`
 2.  特点：数据只能从 `data` 流向页面
 
-#### <span id="head17">1.4.2 双向数据绑定</span>
+#### 1.4.2 双向数据绑定
 
 1. 语法：`v-model:value="xxx"` 或简写为 `v-model="xxx"`
 2. 特点：数据不仅能从 `data` 流向页面，还能从页面流向 `data`
 
-#### <span id="head18">1.4.3 示例代码</span>
+#### 1.4.3 示例代码
 
 ```html
 <!DOCTYPE html>
@@ -460,7 +249,7 @@
 </html>
 ```
 
-### <span id="head19">1.5 MVVM模型</span>
+### 1.5 MVVM模型
 
 1. M：模型(Model)：对应 `data` 中的数据
 2. V：视图(View)：模板
@@ -468,9 +257,9 @@
 
 ![image-20220810144417339](https://chen-coding.oss-cn-shenzhen.aliyuncs.com/web/framework/vue/vue_core/image-20220810144417339.png)
 
-### <span id="head20">1.6 事件处理</span>
+### 1.6 事件处理
 
-#### <span id="head21">1.6.1 绑定监听</span>
+#### 1.6.1 绑定监听
 
 1. `v-on:xxx="fun"`
 2. `@xxx="fun"`
@@ -547,7 +336,7 @@
 </html>
 ```
 
-#### <span id="head22">1.6.2 事件修饰符</span>
+#### 1.6.2 事件修饰符
 
 1. `prevent`: 阻止事件的默认行为 `event.preventDefault()`
 2. `stop`: 停止事件冒泡 `event.stopPropagation()`
@@ -696,7 +485,7 @@
 </html>
 ```
 
-#### <span id="head23">1.6.3 按键修饰符</span>
+#### 1.6.3 按键修饰符
 
 1. `keycode`: 操作的是某个 `keycode` 值的键
 2. `keyName`: 操作的某个按键名的键(少部分)
@@ -776,9 +565,9 @@
 </html>
 ```
 
-### <span id="head24">1.7 计算属性与监视属性</span>
+### 1.7 计算属性与监视属性
 
-#### <span id="head25">1.7.1 计算属性 `computed`</span>
+#### 1.7.1 计算属性 `computed`
 
 1. 要显示的数据不存在，要通过计算得来。
 
@@ -895,7 +684,7 @@
    </html>
    ```
 
-#### <span id="head26">1.7.2 监视属性 `watch`</span>
+#### 1.7.2 监视属性 `watch`
 
 1. 通过通过 `vm` 对象的 `$watch()` 或 `watch` 配置来监视指定的属性
 
@@ -1147,26 +936,26 @@
    </html>
    ```
 
-### <span id="head27">1.8 `class` 与 `style` 绑定</span>
+### 1.8 `class` 与 `style` 绑定
 
-#### <span id="head28">1.8.1 理解</span>
+#### 1.8.1 理解
 
 1. 在应用界面中，某个(些)元素的样式是变化的
 2. `class/style` 绑定就是专门用来实现动态样式效果的技术
 
-#### <span id="head29">1.8.2 `class` 绑定</span>
+#### 1.8.2 `class` 绑定
 
 1. `:class='xxx'`
 2. 表达式是字符串：`'classA'`
 3. 表达式是对象：`{classA:isA,classB:isB}`
 4. 表达式是数组：`['classA','classB']`
 
-#### <span id="head30">1.8.3 `style` 绑定</span>
+#### 1.8.3 `style` 绑定
 
 1. `:style="{color:activeColor,fontSize:fontSize+'px'}"`
 2. 其中 `activeColor/fontSize` 是 `data` 属性
 
-#### <span id="head31">1.8.4 示例代码</span>
+#### 1.8.4 示例代码
 
 ```html
 <!DOCTYPE html>
@@ -1286,19 +1075,19 @@
 </html>
 ```
 
-### <span id="head32">1.9 条件渲染</span>
+### 1.9 条件渲染
 
-#### <span id="head33">1.9.1 条件渲染指令</span>
+#### 1.9.1 条件渲染指令
 
 1. `v-if` 与 `v-else`
 2. `v-show`
 
-#### <span id="head34">1.9.2 比较 `v-if` 与 `v-show`</span>
+#### 1.9.2 比较 `v-if` 与 `v-show`
 
 1. 如果需要频繁切换 `v-show` 较好
 2. 当条件不成立时，`v-if` 的所有子节点不会解析(项目中使用)
 
-#### <span id="head35">1.9.3 示例代码</span>
+#### 1.9.3 示例代码
 
 ```html
 <!DOCTYPE html>
@@ -1366,14 +1155,14 @@
 </html>
 ```
 
-### <span id="head36">1.10 列表渲染</span>
+### 1.10 列表渲染
 
-#### <span id="head37">1.10.1 列表显示指令</span>
+#### 1.10.1 列表显示指令
 
 1. 遍历数组：`v-for/index`
 2. 遍历对象：`v-for/key`
 
-#### <span id="head38">1.10.2 示例代码</span>
+#### 1.10.2 示例代码
 
 1. 基本列表
 
@@ -2082,7 +1871,7 @@
     </html>
     ```
 
-### <span id="head39">1.11 收集表单数据</span>
+### 1.11 收集表单数据
 
 ```html
 <!DOCTYPE html>
@@ -2168,15 +1957,15 @@
 </html>
 ```
 
-### <span id="head40">1.12 过滤器</span>
+### 1.12 过滤器
 
 
-#### <span id="head41">1.12.1 理解过滤器</span>
+#### 1.12.1 理解过滤器
 
 1. 功能：对要显示的数据进行特定格式化后再显示
 2. 注意：并没有改变原本的数据，是产生新的对应的数据
 
-#### <span id="head42">1.12.2 示例代码</span>
+#### 1.12.2 示例代码
 
 ```html
 <!DOCTYPE html>
@@ -2267,9 +2056,9 @@
 </html>
 ```
 
-### <span id="head43">1.13 内置指令与自定义指令</span>
+### 1.13 内置指令与自定义指令
 
-#### <span id="head44">1.13.1 常用内置指令</span>
+#### 1.13.1 常用内置指令
 
 1. `v-text`: 更新元素的 `textContent`
 2. `v-html`: 更新元素的 `innerHTML`
@@ -2282,7 +2071,7 @@
 9. `v-model`: 双向数据绑定
 10. `v-cloak`: 防止闪现，与 `css` 配合: `[v-cloak]{display:none}`
 
-#### <span id="head45">1.13.2 自定义指令</span>
+#### 1.13.2 自定义指令
 
 1. 注册全局指令
 
@@ -2309,13 +2098,13 @@
    v-my-directive='xxx'
    ```
 
-### <span id="head46">1.14 Vue实例生命周期</span>
+### 1.14 Vue实例生命周期
 
-#### <span id="head47">1.14.1 生命周期流程图</span>
+#### 1.14.1 生命周期流程图
 
 ![lifecycle.png](https://v2.cn.vuejs.org/images/lifecycle.png)
 
-#### <span id="head48">1.14.2 vue生命周期分析</span>
+#### 1.14.2 vue生命周期分析
 
 1. 初始化显示
    - `beforeCreate()`
@@ -2331,7 +2120,7 @@
    - `beforeDestory()`
    - `destoryed()`
 
-#### <span id="head49">1.14.3 示例代码</span>
+#### 1.14.3 示例代码
 
 ```html
 <!DOCTYPE html>
@@ -2425,47 +2214,47 @@
 </html>
 ```
 
-#### <span id="head50">1.14.4 常用的生命周期方法</span>
+#### 1.14.4 常用的生命周期方法
 
 1. `mounted()`: 发送 `ajax` 请求，启动定时器等异步任务
 2. `beforeDestory()`: 做收尾工作，如：清除定时器
 
 
 
-## <span id="head51">2. `Vue` 组件化编程</span>
+## 2. `Vue` 组件化编程
 
-### <span id="head52">2.1 模块与组件、模块化与组件化</span>
+### 2.1 模块与组件、模块化与组件化
 
-#### <span id="head53">2.1.1 模块</span>
+#### 2.1.1 模块
 
 1. 理解：向外提供特定功能的 `js` 程序，一般就是一个 `js` 文件
 2. 为什么：`js` 文件很多很复杂
 3. 作用：复用 `js`，简化 `js` 的编写，提高 `js` 运行效率
 
-#### <span id="head54">2.1.2 组件</span>
+#### 2.1.2 组件
 
 1. 理解：用来实现局部(特定)功能效果的代码集合( `html/css/js/image`.....)
 2. 为什么：一个界面的功能很复杂
 3. 作用：复用编码，简化项目编码，提高运行效率
 
-#### <span id="head55">2.1.3 模块化</span>
+#### 2.1.3 模块化
 
 当应用中的 `js` 都以模块来编写的，那这个应用就是一个模块化的应用。
 
-#### <span id="head56">2.1.4 组件化</span>
+#### 2.1.4 组件化
 
 当应用中的功能都是多组件的方式来编写的，那这个应用就是一个组件化的应用。
 
-### <span id="head57">2.2 非单文件组件</span>
+### 2.2 非单文件组件
 
-#### <span id="head58">2.2.1 说明</span>
+#### 2.2.1 说明
 
 1. 模板编写没有提示
 2. 没有构建过程，无法将 `ES6` 转换成 `ES5`
 3. 不支持组件的 `CSS`
 4. 真正开发中几乎不用
 
-#### <span id="head59">2.2.2 基本使用</span>
+#### 2.2.2 基本使用
 
 ```html
 <!DOCTYPE html>
@@ -2583,7 +2372,7 @@
 </html>
 ```
 
-#### <span id="head60">2.2.3 注意事项</span>
+#### 2.2.3 注意事项
 
 
 
@@ -2685,7 +2474,7 @@
 </html>
 ```
 
-#### <span id="head61">2.2.4 组件的嵌套</span>
+#### 2.2.4 组件的嵌套
 
 ![components.png](https://v2.cn.vuejs.org/images/components.png)
 
@@ -2799,7 +2588,7 @@
 </html>
 ```
 
-#### <span id="head62">2.2.5 VueComponent</span>
+#### 2.2.5 VueComponent
 
 ```html
 <!DOCTYPE html>
@@ -2902,7 +2691,7 @@
 </html>
 ```
 
-#### <span id="head63">2.2.6 内置关系</span>
+#### 2.2.6 内置关系
 
 ```html
 <!DOCTYPE html>
@@ -2995,9 +2784,9 @@
 </html>
 ```
 
-### <span id="head64">2.3 单文件组件</span>
+### 2.3 单文件组件
 
-#### <span id="head65">2.3.1 一个.vue文件的组成( 3 个部分)</span>
+#### 2.3.1 一个.vue文件的组成( 3 个部分)
 
 1. 模板页面
 
@@ -3057,7 +2846,7 @@
    </style>
    ```
 
-#### <span id="head66">2.3.2 基本使用</span>
+#### 2.3.2 基本使用
 
 1. 引入组件
 
@@ -3090,17 +2879,17 @@
    
 
 
-## <span id="head67">3. 使用 `Vue` 脚手架</span>
+## 3. 使用 `Vue` 脚手架
 
-### <span id="head68">3.1 初始化脚手架</span>
+### 3.1 初始化脚手架
 
-#### <span id="head69">3.1.1 说明</span>
+#### 3.1.1 说明
 
 1. `Vue` 脚手架是 `Vue` 官方提供的标准化开发工具（开发平台）
 2. 最新的版本是 `4.x`
 3. [文档](https://cli.vuejs.org/zh/)
 
-#### <span id="head70">3.1.2 具体步骤</span>
+#### 3.1.2 具体步骤
 
 1. 第一步（仅第一次执行）：全局安装 `@vue/cli`
 
@@ -3136,7 +2925,7 @@
          vue inspect > output.js
          ```
 
-#### <span id="head71">3.1.3 模板项目的结构</span>
+#### 3.1.3 模板项目的结构
 
 ```
 ├──node_modules
@@ -3157,7 +2946,7 @@
 ├──package-lock.json：包版本控制文件
 ```
 
-#### <span id="head72">3.1.4 不同版本的 `Vue`</span>
+#### 3.1.4 不同版本的 `Vue`
 
 
 1. `vue.js` 与 `vue.runtime.xxx.js` 的区别：
@@ -3165,7 +2954,7 @@
     2. `vue.runtime.xxx.js` 是运行版的 `Vue`，只包含：核心功能；没有模板解析器
 2. 因为 `vue.runtime.xxx.js` 没有模板解析器，所以不能使用 `template` 这个配置项，需要使用 `render` 函数接收到的 `createElement` 函数去指定具体内容
 
-#### <span id="head73">3.1.5 `vue.config.js` 配置文件</span>
+#### 3.1.5 `vue.config.js` 配置文件
 
 1. 使用 `vue inspect > output.js` 可以查看到Vue脚手架的默认配置。
 
@@ -3173,9 +2962,9 @@
 
 
 
-### <span id="head74">3.2 `ref`</span>
+### 3.2 `ref`
 
-#### <span id="head75">3.2.1 使用说明</span>
+#### 3.2.1 使用说明
 
 1. 被用来给元素或子组件注册引用信息（id 的替代者）
 2. 应用在 `html` 标签上获取的是真实 `DOM` 元素，应用在组件标签上是组件实例对象（`vc`）
@@ -3183,9 +2972,9 @@
     1. 打标识：```<h1 ref="xxx">.....</h1>``` 或 ```<School ref="xxx"></School>```
     2. 获取：```this.$refs.xxx```
 
-### <span id="head76">3.3 `props`</span>
+### 3.3 `props`
 
-#### <span id="head77">3.3.1 使用说明</span>
+#### 3.3.1 使用说明
 
 
 1. 功能：让组件接收外部传过来的数据
@@ -3212,7 +3001,7 @@
 
     > 备注：`props` 是只读的，`Vue` 底层会监测你对 `props` 的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制 `props` 的内容到 `data` 中一份，然后去修改 `data` 中的数据。
     
-#### <span id="head78">3.3.2 代码示例</span>
+#### 3.3.2 代码示例
 
 父组件 `App` 中使用子组件 `Student`，并传参数
 
@@ -3304,9 +3093,9 @@ export default {
 </script>
 ```
 
-### <span id="head79">3.4 混入</span>
+### 3.4 混入
 
-#### <span id="head80">3.4.1 使用说明</span>
+#### 3.4.1 使用说明
 
 1. 功能：可以把多个组件共用的配置提取成一个混入对象
 
@@ -3326,7 +3115,7 @@ export default {
     ​	- 全局混入：```Vue.mixin(xxx)```
     ​	- 局部混入：```mixins:['xxx']	```
 
-#### <span id="head81">3.4.2 代码示例</span>
+#### 3.4.2 代码示例
 
 定义混入 `mixin.js`
 
@@ -3431,9 +3220,9 @@ export default {
 </script>
 ```
 
-### <span id="head82">3.5 插件</span>
+### 3.5 插件
 
-#### <span id="head83">3.5.1 使用说明</span>
+#### 3.5.1 使用说明
 
 1. 功能：用于增强 `Vue`
 
@@ -3460,7 +3249,7 @@ export default {
 
 4. 使用插件：```Vue.use()```
 
-#### <span id="head84">3.5.2 代码示例</span>
+#### 3.5.2 代码示例
 
 定义插件 `plugins.js`
 
@@ -3509,7 +3298,7 @@ Vue.use(plugins)
 
 ```
 
-### <span id="head85">3.6 `scoped` 样式</span>
+### 3.6 `scoped` 样式
 
 1. 作用：让样式在局部生效，防止冲突。
 
@@ -3527,7 +3316,7 @@ Vue.use(plugins)
    </style>
    ```
 
-### <span id="head86">3.7 组件化编码流程</span>
+### 3.7 组件化编码流程
 
 1. 组件化编码流程：
    1. 拆分静态组件：组件要按照功能点拆分，命名不要与 `html` 元素冲突。
@@ -3541,9 +3330,9 @@ Vue.use(plugins)
 3. 使用 `v-model` 时要切记：`v-model` 绑定的值不能是 `props` 传过来的值，因为 `props` 是不可以修改的！
 4. `props` 传过来的若是对象类型的值，修改对象中的属性时 `Vue` 不会报错，但不推荐这样做。
 
-### <span id="head87">3.8 `webStorage`</span>
+### 3.8 `webStorage`
 
-#### <span id="head88">3.8.1 使用说明</span>
+#### 3.8.1 使用说明
 
 1. 存储内容大小一般支持 5MB 左右（不同浏览器可能还不一样）
 
@@ -3566,7 +3355,7 @@ Vue.use(plugins)
     3. ```xxxxxStorage.getItem(xxx)``` 如果 xxx 对应的 `value` 获取不到，那么 `getItem` 的返回值是 `null`
     4. ```JSON.parse(null)``` 的结果依然是 `null`
 
-#### <span id="head89">3.8.2 代码示例</span>
+#### 3.8.2 代码示例
 
 `LocalStorage`
 
@@ -3693,9 +3482,9 @@ Vue.use(plugins)
 ```
 
 
-### <span id="head90">3.9 组件的自定义事件</span>
+### 3.9 组件的自定义事件
 
-#### <span id="head91">3.9.1 使用说明</span>
+#### 3.9.1 使用说明
 1. 一种组件间通信的方式，适用于：<strong style="color:red">子组件 ===> 父组件</strong>
 
 2. 使用场景：A 是父组件，B 是子组件，B 想给 A 传数据，那么就要在 A 中给 B 绑定自定义事件（<span style="color:red">事件的回调在 A 中</span>）。
@@ -3724,7 +3513,7 @@ Vue.use(plugins)
 
 7. 注意：通过 ```this.$refs.xxx.$on('helloWorld',回调)``` 绑定自定义事件时，回调<span style="color:red">要么配置在methods中</span>，<span style="color:red">要么用箭头函数</span>，否则 `this` 指向会出问题！
 
-#### <span id="head92">3.9.2 代码示例</span>
+#### 3.9.2 代码示例
 
 父组件 `	App`
 
@@ -3907,9 +3696,9 @@ export default {
 </style>
 ```
 
-### <span id="head93">3.10 全局事件总线</span>
+### 3.10 全局事件总线
 
-#### <span id="head94">3.10.1 使用说明</span>
+#### 3.10.1 使用说明
 1. 一种组件间通信的方式，适用于<span style="color:red">任意组件间通信</span>。
 
 2. 安装全局事件总线：
@@ -3942,7 +3731,7 @@ export default {
 
 4. 最好在 `beforeDestroy` 钩子中，用 `$off` 去解绑<span style="color:red">当前组件所用到的</span>事件。
 
-#### <span id="head95">3.10.2 代码示例</span>
+#### 3.10.2 代码示例
 
 在 `main.js` 中安装全局事件总线
 
@@ -4065,9 +3854,9 @@ export default {
 </style>
 ```
 
-### <span id="head96">3.11 消息订阅与发布</span>
+### 3.11 消息订阅与发布
 
-#### <span id="head97">3.11.1 说明使用</span>
+#### 3.11.1 说明使用
 1. 一种组件间通信的方式，适用于<span style="color:red">任意组件间通信</span>
 
 2. 它包含以下操作：
@@ -4108,7 +3897,7 @@ export default {
 
    5. 最好在 `beforeDestroy` 钩子中，用 ```PubSub.unsubscribe(pid)``` 去<span style="color:red">取消订阅。</span>
 
-#### <span id="head98">3.11.2 代码示例</span>
+#### 3.11.2 代码示例
 
 `School` 组件订阅消息
 
@@ -4220,15 +4009,15 @@ export default {
 </style>
 ```
 
-### <span id="head99">3.12 nextTick</span>
+### 3.12 nextTick
 
 
 1. 语法：```this.$nextTick(回调函数)```
 2. 作用：在下一次 `DOM` 更新结束后执行其指定的回调
 3. 什么时候用：当改变数据后，要基于更新后的新 `DOM` 进行某些操作时，要在 `nextTick` 所指定的回调函数中执行
-### <span id="head100">3.13 过度与动画</span>
+### 3.13 过度与动画
 
-#### <span id="head101">3.13.1 使用说明</span>
+#### 3.13.1 使用说明
 1. 作用：在插入、更新或移除 `DOM` 元素时，在合适的时候给元素添加样式类名
 
 3. 写法：
@@ -4254,7 +4043,7 @@ export default {
 
    3. 备注：若有多个元素需要过度，则需要使用：```<transition-group>```，且每个元素都要指定 ```key``` 值
 
-#### <span id="head102">3.13.2 代码示例</span>
+#### 3.13.2 代码示例
 
 `transition`
 
@@ -4397,15 +4186,15 @@ h1 {
 </style>
 ```
 
-### <span id="head103">3.14 插槽</span>
+### 3.14 插槽
 
-#### <span id="head104">3.14.1 使用说明</span>
+#### 3.14.1 使用说明
 
 
 1. 作用：让父组件可以向子组件指定位置插入 `html` 结构，也是一种组件间通信的方式，适用于 <strong style="color:red">父组件 ===> 子组件</strong> 。
 
 2. 分类：默认插槽、具名插槽、作用域插槽
-#### <span id="head105">3.14.2 默认插槽</span>
+#### 3.14.2 默认插槽
 
  父组件
 
@@ -4426,7 +4215,7 @@ h1 {
 </template>
 ```
 
-#### <span id="head106">3.14.3 具名插槽</span>
+#### 3.14.3 具名插槽
 
 父组件中
 
@@ -4454,7 +4243,7 @@ h1 {
 </template>
 ```
 
-#### <span id="head107">3.14.4 作用域插槽</span>
+#### 3.14.4 作用域插槽
 
 1. 理解：<span style="color:red">数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</span>（`games` 数据在 `Category` 组件中，但使用数据所遍历出来的结构由 `App` 组件决定）
 
@@ -4506,11 +4295,11 @@ h1 {
    
 
 
-## <span id="head108">4. `Vue` 中的 `Ajax`</span>
+## 4. `Vue` 中的 `Ajax`
 
-### <span id="head109">4.1 使用代理服务器</span>
+### 4.1 使用代理服务器
 
-#### <span id="head110">4.1.1 方式一</span>
+#### 4.1.1 方式一
 
 在 `vue.config.js` 中添加如下配置：
 
@@ -4526,7 +4315,7 @@ devServer:{
 2. 缺点：不能配置多个代理，不能灵活的控制请求是否走代理。
 3. 工作方式：若按照上述配置代理，当请求了前端不存在的资源时，那么该请求会转发给服务器 （优先匹配前端资源）
 
-#### <span id="head111">4.1.2 方式二</span>
+#### 4.1.2 方式二
 编写 `vue.config.js` 配置具体代理规则：
 
 ```javascript
@@ -4559,9 +4348,9 @@ changeOrigin默认值为true
 1. 优点：可以配置多个代理，且可以灵活的控制请求是否走代理。
 2. 缺点：配置略微繁琐，请求资源时必须加前缀。
 
-### <span id="head112">4.2 `Vue` 项目中常用的 2 个 `Ajax` 库</span>
+### 4.2 `Vue` 项目中常用的 2 个 `Ajax` 库
 
-#### <span id="head113">4.2.1 `Axios`</span>
+#### 4.2.1 `Axios`
 
 1. 说明：通用的 `Ajax` 请求库，官方推荐，使用广泛
 
@@ -4588,34 +4377,34 @@ changeOrigin默认值为true
       );
       ```
 
-#### <span id="head114">4.2.2 `vue-resource`</span>
+#### 4.2.2 `vue-resource`
 
 `Vue` 插件库，`Vue 1.x` 使用广泛，**官方已不维护**
 
 
-## <span id="head115">5. `Vuex`</span>
+## 5. `Vuex`
 
-### <span id="head116">5.1 理解 `Vuex`</span>
+### 5.1 理解 `Vuex`
 
-#### <span id="head117">5.1.1 `Vuex` 是什么</span>
+#### 5.1.1 `Vuex` 是什么
 
 1. 概念：专门在 `Vue` 中实现集中式状态（数据）管理的一个 `Vue` 插件，对 `Vue` 应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
 2. [Github地址](https://github.com/vuejs/vuex)
 
-#### <span id="head118">5.1.2 什么时候使用 `Vuex`</span>
+#### 5.1.2 什么时候使用 `Vuex`
 
 1. 多个组件依赖于同一状态
 2. 来自不同组件的行为需要变更同一状态
 
-#### <span id="head119">5.1.3 `Vuex` 工作原理图</span>
+#### 5.1.3 `Vuex` 工作原理图
 
 <img src="https://vuex.vuejs.org/flow.png" alt="flow.png" style="zoom:67%;" />
 
 ![vuex.png](https://vuex.vuejs.org/vuex.png)
 
-### <span id="head120">5.2 搭建 `Vuex` 环境与基本使用</span>
+### 5.2 搭建 `Vuex` 环境与基本使用
 
-#### <span id="head121">5.2.1 环境 `Vuex` 搭建</span>
+#### 5.2.1 环境 `Vuex` 搭建
 
 1. 创建文件：```src/store/index.js```
 
@@ -4657,7 +4446,7 @@ changeOrigin默认值为true
        })
    ```
 
-#### <span id="head122">5.2.2 基本使用</span>
+#### 5.2.2 基本使用
 
 1. 初始化数据、配置 `actions`、配置 `mutations`，操作文件 `store.js`
 
@@ -4704,9 +4493,9 @@ changeOrigin默认值为true
 
    > 备注：若没有网络请求或其他业务逻辑，组件中也可以越过 `actions`，即不写  `dispatch`，直接编写 `commit`
 
-### <span id="head123">5.3 `Vuex` 核心概念和API</span>
+### 5.3 `Vuex` 核心概念和API
 
-#### <span id="head124">5.3.1 `state`</span>
+#### 5.3.1 `state`
 
 1. `Vuex` 管理的状态对象
 
@@ -4720,7 +4509,7 @@ changeOrigin默认值为true
    }
    ```
 
-#### <span id="head125">5.3.2 `actions`</span>
+#### 5.3.2 `actions`
 
 1. 值为一个对象，包含多个响应用户动作的回调函数
 
@@ -4744,7 +4533,7 @@ changeOrigin默认值为true
      }
      ```
 
-#### <span id="head126">5.3.3 `mutations`</span>
+#### 5.3.3 `mutations`
 
 
 1. 值是一个对象，包含多个直接更新 `state` 的方法
@@ -4767,7 +4556,7 @@ changeOrigin默认值为true
    }
    ```
 
-#### <span id="head127">5.3.4 `getters`</span>
+#### 5.3.4 `getters`
 
 
 1. 概念：当 `state` 中的数据需要经过加工后再使用时，可以使用 `getters` 加工。
@@ -4791,9 +4580,9 @@ changeOrigin默认值为true
 
 3. 组件中读取数据：`$store.getters.bigSum`
 
-### <span id="head128">5.4 四个 `map` 方法的使用</span>
+### 5.4 四个 `map` 方法的使用
 
-#### <span id="head129">5.4.1 `mapState` 方法</span>
+#### 5.4.1 `mapState` 方法
 
 <strong>`mapState` 方法：</strong>用于帮助我们映射 `state` 中的数据为计算属性
 
@@ -4807,7 +4596,7 @@ computed: {
 },
 ```
 
-#### <span id="head130">5.4.2 `mapGetters` 方法</span>
+#### 5.4.2 `mapGetters` 方法
 
 <strong>`mapGetters` 方法：</strong>用于帮助我们映射 `getters` 中的数据为计算属性
 
@@ -4821,7 +4610,7 @@ computed: {
 },
 ```
 
-#### <span id="head131">5.4.3 `mapActions` 方法</span>
+#### 5.4.3 `mapActions` 方法
 
 <strong>`mapActions` 方法：</strong>用于帮助我们生成与 `actions` 对话的方法，即：包含 `$store.dispatch(xxx)` 的函数
 
@@ -4835,7 +4624,7 @@ methods:{
 }
 ```
 
-#### <span id="head132">5.4.4 `mapMutations` 方法</span>
+#### 5.4.4 `mapMutations` 方法
 
 <strong>`mapMutations` 方法：</strong>用于帮助我们生成与 `mutations` 对话的方法，即：包含 `$store.commit(xxx)` 的函数
 
@@ -4851,7 +4640,7 @@ methods:{
 
 
 > 备注：`mapActions` 与 `mapMutations` 使用时，若需要传递参数需要：在模板中绑定事件时传递好参数，否则参数是事件对象。
-### <span id="head133">5.5 模块化+命名空间</span>
+### 5.5 模块化+命名空间
 1. 业务场景中需要包含多个 `module`，一个 `module` 是一个 `store` 的配置对象，与一个组件（包含有共享数据）对应
 2. 目的：让代码更好维护，让多种数据分类更加明确
 
@@ -4925,15 +4714,15 @@ methods:{
 
    
 
-## <span id="head134">6. `vue-router`</span>
+## 6. `vue-router`
 
-### <span id="head135">6.1 相关理解</span>
+### 6.1 相关理解
 
-#### <span id="head136">6.1.1 `vue-router` 的理解</span>
+#### 6.1.1 `vue-router` 的理解
 
 `Vue` 的一个插件库，专门用来实现 `SPA` 应用
 
-#### <span id="head137">6.1.2 对 `SPA` 应用的理解</span>
+#### 6.1.2 对 `SPA` 应用的理解
 
 1. 单页 `Web` 应用（single page web application，SPA）
 2. 整个应用只有一个完整的页面
@@ -4941,7 +4730,7 @@ methods:{
 4. 数据需要通过 `Ajax` 请求获取
 
 
-#### <span id="head138">6.1.3 路由的理解</span>
+#### 6.1.3 路由的理解
 
 1. 什么是路由
 
@@ -4959,9 +4748,9 @@ methods:{
    1. 理解：`value` 是 `component`，用于展示页面内容
    2. 工作过程：当浏览器的路径改变时,对应的组件就会显示。
 
-### <span id="head139">6.2 基本路由</span>
+### 6.2 基本路由
 
-#### <span id="head140">6.2.1 安装与使用</span>
+#### 6.2.1 安装与使用
 
 
 1. 安装 `vue-router`，命令：`npm install vue-router`
@@ -5014,13 +4803,13 @@ methods:{
 	3. 每个组件都有自己的 `$route` 属性，里面存储着自己的路由信息
 	4. 整个应用只有一个 `router`，可以通过组件的 `$router` 属性获取到
 
-#### <span id="head141">6.2.2 总结</span>
+#### 6.2.2 总结
 编写使用路由的 3 步
 1. 定义路由组件
 2. 注册路由
 3. 使用路由
 
-### <span id="head142">6.3 嵌套（多级）路由</span>
+### 6.3 嵌套（多级）路由
 
 
 1. 配置路由规则，使用 `children` 配置项：
@@ -5053,9 +4842,9 @@ methods:{
    ```vue
    <router-link to="/home/news">News</router-link>
    ```
-### <span id="head143">6.4 路由传参</span>
+### 6.4 路由传参
 
-#### <span id="head144">6.4.1 路由的 `query` 参数</span>
+#### 6.4.1 路由的 `query` 参数
 
 
 1. 传递参数
@@ -5082,7 +4871,7 @@ methods:{
    $route.query.id
    $route.query.title
    ```
-#### <span id="head145">6.4.2 命名路由</span>
+#### 6.4.2 命名路由
 
 
 1. 作用：可以简化路由的跳转。
@@ -5131,7 +4920,7 @@ methods:{
       	}"
       >跳转</router-link>
       ```
-#### <span id="head146">6.4.3 路由的 `params` 参数</span>
+#### 6.4.3 路由的 `params` 参数
 
 1. 配置路由，声明接收 `params` 参数
 
@@ -5185,7 +4974,7 @@ methods:{
    $route.params.title
    ```
 
-#### <span id="head147">6.4.4 路由的 `props` 配置</span>
+#### 6.4.4 路由的 `props` 配置
 作用：让路由组件更方便的收到参数
 
 ```js
@@ -5210,14 +4999,14 @@ methods:{
 }
 ```
 
-#### <span id="head148">6.4.5 `<router-link>` 的 `replace` 属性</span>
+#### 6.4.5 `<router-link>` 的 `replace` 属性
 
 
 1. 作用：控制路由跳转时操作浏览器历史记录的模式
 2. 浏览器的历史记录有两种写入方式：分别为 `push` 和 `replace`，`push` 是追加历史记录，`replace` 是替换当前记录。路由跳转时候默认为 `push`
 3. 开启 `replace` 模式： `<router-link replace .......>News</router-link>`
 
-### <span id="head149">6.5 编程式路由导航</span>
+### 6.5 编程式路由导航
 
 1. `this.$router.push(path)`: 相当于点击路由链接(可以返回到当前路由界面)
 2. `this.$router.replace(path)`: 用新路由替换当前路由(不可以返回到当前路由界面)
@@ -5226,32 +5015,32 @@ methods:{
 5. `this.$router.go( 1 )`: 请求下一个记录路由
 
 
-## <span id="head150">7. Vue UI组件库</span>
+## 7. Vue UI组件库
 
-#### <span id="head151">7.1 移动端常用UI组件库</span>
+#### 7.1 移动端常用UI组件库
 
 1. [Vant](https://youzan.github.io/vant)
 2. [CubeUI](https://didi.github.io/cube-ui)
 3. [MintUI](http://mint-ui.github.io)
 
-#### <span id="head152">7.2 PC端常用UI组件库</span>
+#### 7.2 PC端常用UI组件库
 
 1. [Element UI](https://element.eleme.cn)
 2. [IViewUI](https://www.iviewui.com)
 
 
 
-## <span id="head153">8. `Vue3` 快速上手</span>
+## 8. `Vue3` 快速上手
 
 <img src="https://user-images.githubusercontent.com/499550/93624428-53932780-f9ae-11ea-8d16-af949e16a09f.png" style="width:200px" />
 
-### <span id="head154">8.1 `Vue3` 简介</span>
+### 8.1 `Vue3` 简介
 
 - 2020年9月18日，`Vue.js` 发布 `3.0` 版本，代号：`One Piece`（海贼王）
 - 耗时2年多、[2600+次提交](https://github.com/vuejs/vue-next/graphs/commit-activity)、[30+个RFC](https://github.com/vuejs/rfcs/tree/master/active-rfcs)、[600+次PR](https://github.com/vuejs/vue-next/pulls?q=is%3Apr+is%3Amerged+-author%3Aapp%2Fdependabot-preview+)、[99位贡献者](https://github.com/vuejs/vue-next/graphs/contributors) 
 - [github 上的 tags](https://github.com/vuejs/vue-next/releases/tag/v3.0.0)
 
-### <span id="head155">8.2 `Vue3` 带来了什么</span>
+### 8.2 `Vue3` 带来了什么
 
 1. 性能的提升
 
@@ -5293,9 +5082,9 @@ methods:{
 
 
 
-## <span id="head156">9. 创建 `Vue3` 工程</span>
+## 9. 创建 `Vue3` 工程
 
-### <span id="head157">9.1 使用 `vue-cli` 创建</span>
+### 9.1 使用 `vue-cli` 创建
 
 [官方文档](https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create)
 
@@ -5311,7 +5100,7 @@ cd vue_test
 npm run serve
 ```
 
-### <span id="head158">9.2 使用 `vite` 创建</span>
+### 9.2 使用 `vite` 创建
 
 [官方文档](https://v3.cn.vuejs.org/guide/installation.html#vite)
 
@@ -5341,13 +5130,13 @@ npm install
 npm run dev
 ```
 
-## <span id="head159">10. 常用 `Composition API`</span>
+## 10. 常用 `Composition API`
 
 [官方文档](https://v3.cn.vuejs.org/guide/composition-api-introduction.html)
 
-### <span id="head160">10.1 拉开序幕的 `setup`</span>
+### 10.1 拉开序幕的 `setup`
 
-#### <span id="head161">10.1.1 使用说明</span>
+#### 10.1.1 使用说明
 
 1. 理解：`Vue3` 中一个新的配置项，值为一个函数
 2. `setup` 是所有<strong style="color:#DD5145">`Composition API`（组合API）</strong><i style="color:gray;font-weight:bold">“ 表演的舞台 ”</i>
@@ -5362,7 +5151,7 @@ npm run dev
       - 如果有重名，`setup` 优先
    2. `setup` 不能是一个 `async` 函数，因为返回值不再是 `return` 的对象，而是 `promise`, 模板看不到 `return` 对象中的属性。（后期也可以返回一个`Promise` 实例，但需要 `Suspense` 和异步组件的配合）
 
-#### <span id="head162">10.1.2 代码示例</span>
+#### 10.1.2 代码示例
 
 ```vue
 <template>
@@ -5446,9 +5235,9 @@ export default {
 </script>
 ```
 
-### <span id="head163">10.2 `ref` 函数</span>
+### 10.2 `ref` 函数
 
-#### <span id="head164">10.2.1 使用说明</span>
+#### 10.2.1 使用说明
 
 - 作用：定义一个响应式的数据
 - 语法: `const xxx = ref(initValue)`
@@ -5460,7 +5249,7 @@ export default {
   - 基本类型的数据：响应式依然是靠 `Object.defineProperty()` 的 `get` 与 `set` 完成的
   - 对象类型的数据：内部 <i style="color:gray;font-weight:bold">“ 求助 ”</i> 了 `Vue3.0` 中的一个新函数——  `reactive` 函数
 
-#### <span id="head165">10.2.2 代码示例</span>
+#### 10.2.2 代码示例
 
 ```vue
 <template>
@@ -5511,16 +5300,16 @@ export default {
 </script>
 ```
 
-### <span id="head166">10.3 `reactive` 函数</span>
+### 10.3 `reactive` 函数
 
-#### <span id="head167">10.3.1 使用说明</span>
+#### 10.3.1 使用说明
 
 - 作用：定义一个<strong style="color:#DD5145">对象类型</strong>的响应式数据（基本类型不要用它，要用 `ref` 函数）
 - 语法：`const 代理对象= reactive(源对象)` 接收一个对象（或数组），返回一个<strong style="color:#DD5145">代理对象（`Proxy` 的实例对象，简称 `proxy` 对象）</strong>
 - `reactive` 定义的响应式数据是“深层次的”
 - 内部基于 `ES6` 的 `Proxy` 实现，通过代理对象操作源对象内部数据进行操作
 
-#### <span id="head168">10.3.2 代码示例</span>
+#### 10.3.2 代码示例
 
 ```vue
 <template>
@@ -5583,9 +5372,9 @@ export default {
 </script>
 ```
 
-### <span id="head169">10.4 Vue 中的响应式原理</span>
+### 10.4 Vue 中的响应式原理
 
-#### <span id="head170">10.4.1 `Vue2.x` 的响应式</span>
+#### 10.4.1 `Vue2.x` 的响应式
 
 - 实现原理：
 
@@ -5605,7 +5394,7 @@ export default {
   - 新增属性、删除属性,，界面不会更新
   - 直接通过下标修改数组，界面不会自动更新
 
-#### <span id="head171">10.4.2 `Vue3.0` 的响应式</span>
+#### 10.4.2 `Vue3.0` 的响应式
 
 - 实现原理: 
 
@@ -5751,7 +5540,7 @@ export default {
   </html>
   ```
 
-### <span id="head172">10.5 `reactive` 对比 `ref`</span>
+### 10.5 `reactive` 对比 `ref`
 
 -  从定义数据角度对比：
    -  `ref` 用来定义：<strong style="color:#DD5145">基本类型数据</strong>
@@ -5764,9 +5553,9 @@ export default {
    -  `ref` 定义的数据：操作数据<strong style="color:#DD5145">需要</strong> `.value`，读取数据时模板中直接读取<strong style="color:#DD5145">不需要</strong> `.value`
    -  `reactive` 定义的数据：操作数据与读取数据：<strong style="color:#DD5145">均不需要</strong> `.value`
 
-### <span id="head173">10.6 `setup` 的两个注意点</span>
+### 10.6 `setup` 的两个注意点
 
-#### <span id="head174">10.6.1 使用说明</span>
+#### 10.6.1 使用说明
 
 - `setup` 执行的时机
   - 在 `beforeCreate` 之前执行一次，`this` 是 `undefined`
@@ -5778,7 +5567,7 @@ export default {
     - `slots`: 收到的插槽内容, 相当于 `this.$slots`
     - `emit`: 分发自定义事件的函数, 相当于 `this.$emit`
 
-#### <span id="head175">10.6.2 代码示例</span>
+#### 10.6.2 代码示例
 
 ```vue
 <template>
@@ -5829,9 +5618,9 @@ export default {
 </script>
 ```
 
-### <span id="head176">10.7 计算属性与监视</span>
+### 10.7 计算属性与监视
 
-#### <span id="head177">10.7.1 `computed` 函数</span>
+#### 10.7.1 `computed` 函数
 
 - 与 `Vue2.x` 中 `computed` 配置功能一致
 
@@ -5912,7 +5701,7 @@ export default {
   </script>
   ```
 
-#### <span id="head178">10.7.2 `watch` 函数</span>
+#### 10.7.2 `watch` 函数
 
 - 与 `Vue2` 中 `watch` 配置功能一致
 
@@ -6062,7 +5851,7 @@ export default {
   </script>
   ```
 
-#### <span id="head179">10.7.3 `watchEffect` 函数</span>
+#### 10.7.3 `watchEffect` 函数
 
 - `watch` 的套路是：既要指明监视的属性，也要指明监视的回调
 
@@ -6150,9 +5939,9 @@ export default {
   </script>
   ```
 
-### <span id="head180">10.8 生命周期</span>
+### 10.8 生命周期
 
-### <span id="head181">10.8.1 使用说明</span>
+### 10.8.1 使用说明
 
 - `Vue3` 中可以继续使用 `Vue2` 中的生命周期钩子，但有有两个被更名：
   - `beforeDestroy` 改名为 `beforeUnmount`
@@ -6166,7 +5955,7 @@ export default {
   - `beforeUnmount`  ===> `onBeforeUnmount`
   - `unmounted` ==> `onUnmounted`
 
-### <span id="head182">10.8.2 代码示例</span>
+### 10.8.2 代码示例
 
 ```vue
 <template>
@@ -6245,15 +6034,15 @@ export default {
 </script>
 ```
 
-### <span id="head183">10.9 自定义 `hook` 函数</span>
+### 10.9 自定义 `hook` 函数
 
-### <span id="head184">10.9.1 使用说明</span>
+### 10.9.1 使用说明
 
 - 什么是 `hook`？—— 本质是一个函数，把 `setup` 函数中使用的 `Composition API` 进行了封装
 - 类似于 `Vue2` 中的 `mixin`
 - 自定义 `hook` 的优势：复用代码，让 `setup` 中的逻辑更清楚易懂
 
-#### <span id="head185">10.9.2 代码示例</span>
+#### 10.9.2 代码示例
 
 创建 `js` 文件
 
@@ -6312,9 +6101,9 @@ export default {
 </script>
 ```
 
-### <span id="head186">10.10 `toRef`</span>
+### 10.10 `toRef`
 
-#### <span id="head187">10.10.1 使用说明</span>
+#### 10.10.1 使用说明
 
 - 作用：创建一个 `ref` 对象，其 `value` 值指向另一个对象中的某个属性
 - 语法：```const name = toRef(person,'name')```
@@ -6323,7 +6112,7 @@ export default {
 
 - 扩展：```toRefs``` 与```toRef```功能一致，但可以批量创建多个 ref 对象，语法：```toRefs(person)```
 
-#### <span id="head188">10.10.2 代码示例</span>
+#### 10.10.2 代码示例
 
 ```vue
 <template>
@@ -6368,9 +6157,9 @@ export default {
 </script>
 ```
 
-## <span id="head189">11. 其它 `Composition API`</span>
+## 11. 其它 `Composition API`
 
-### <span id="head190">11.1 `shallowReactive` 与 `shallowRef`</span>
+### 11.1 `shallowReactive` 与 `shallowRef`
 
 - `shallowReactive`：只处理对象最外层属性的响应式（浅响应式）
 
@@ -6438,7 +6227,7 @@ export default {
   </script>
   ```
 
-### <span id="head191">11.2 `readonly` 与 `shallowReadonly`</span>
+### 11.2 `readonly` 与 `shallowReadonly`
 
 - `readonly`: 让一个响应式数据变为只读的（深只读）
 
@@ -6499,9 +6288,9 @@ export default {
   </script>
   ```
 
-### <span id="head192">11.3 `toRaw` 与 `markRaw`</span>
+### 11.3 `toRaw` 与 `markRaw`
 
-#### <span id="head193">11.3.1 使用说明</span>
+#### 11.3.1 使用说明
 
 - `toRaw`：
   - 作用：将一个由 `reactive` 生成的<strong style="color:orange">响应式对象</strong>转为<strong style="color:orange">普通对象</strong>
@@ -6512,7 +6301,7 @@ export default {
     1.  有些值不应被设置为响应式的，例如复杂的第三方类库等
     2. 当渲染具有不可变数据源的大列表时，跳过响应式转换可以提高性能
 
-#### <span id="head194">11.3.2 代码示例</span>
+#### 11.3.2 代码示例
 
 ```vue
 <template>
@@ -6586,7 +6375,7 @@ export default {
 </script>
 ```
 
-### <span id="head195">11.4 `customRef`</span>
+### 11.4 `customRef`
 
 - 作用：创建一个自定义的 `ref`，并对其依赖项跟踪和更新触发进行显式控制
 
@@ -6633,9 +6422,9 @@ export default {
   </script>
   ```
 
-### <span id="head196">11.5 `provide` 与 `inject`</span>
+### 11.5 `provide` 与 `inject`
 
-#### <span id="head197">11.5.1 使用介绍</span>
+#### 11.5.1 使用介绍
 
 - 作用：实现<strong style="color:#DD5145">祖与后代组件间</strong>通信
 
@@ -6665,7 +6454,7 @@ export default {
      }
      ```
 
-#### <span id="head198">11.5.2 代码示例</span>
+#### 11.5.2 代码示例
 
 父组件 `App` 
 
@@ -6768,16 +6557,16 @@ export default {
 </style>
 ```
 
-### <span id="head199">11.6 响应式数据的判断</span>
+### 11.6 响应式数据的判断
 
-#### <span id="head200">11.6.1 使用说明</span>
+#### 11.6.1 使用说明
 
 - `isRef`: 检查一个值是否为一个 `ref` 对象
 - `isReactive`: 检查一个对象是否是由 `reactive` 创建的响应式代理
 - `isReadonly`: 检查一个对象是否是由 `readonly` 创建的只读代理
 - `isProxy`: 检查一个对象是否是由 `reactive` 或者 `readonly` 方法创建的代理
 
-#### <span id="head201">11.6.2 代码示例</span>
+#### 11.6.2 代码示例
 
 ```vue
 <template>
@@ -6822,9 +6611,9 @@ export default {
 </script>
 ```
 
-## <span id="head202">12. `Composition API` 的优势</span>
+## 12. `Composition API` 的优势
 
-### <span id="head203">12.1 `Options API` 存在的问题</span>
+### 12.1 `Options API` 存在的问题
 
 使用传统 `Options API` 中，新增或者修改一个需求，就需要分别在 `data`，`methods`，`computed` 里修改 
 
@@ -6852,7 +6641,7 @@ export default {
 
 
 
-### <span id="head204">12.2 `Composition API` 的优势</span>
+### 12.2 `Composition API` 的优势
 
 我们可以更加优雅的组织我们的代码、函数，让相关功能的代码更加有序的组织在一起
 
@@ -6878,15 +6667,15 @@ export default {
 
 
 
-## <span id="head205">13. 新的组件</span>
+## 13. 新的组件
 
-### <span id="head206">13.1 `Fragment`</span>
+### 13.1 `Fragment`
 
 - 在 `Vue2` 中：组件必须有一个根标签
 - 在 `Vue3` 中：组件可以没有根标签，内部会将多个标签包含在一个 `Fragment` 虚拟元素中
 - 好处：减少标签层级，减小内存占用
 
-### <span id="head207">13.2 `Teleport`</span>
+### 13.2 `Teleport`
 
 - 什么是 `Teleport`？—— `Teleport` 是一种能够将我们的<strong style="color:#DD5145">组件 `html` 结构</strong>移动到指定位置的技术。
 
@@ -6901,7 +6690,7 @@ export default {
   </teleport>
   ```
 
-### <span id="head208">13.3 `Suspense`</span>
+### 13.3 `Suspense`
 
 - 等待异步组件时渲染一些额外内容，让应用有更好的用户体验
 
@@ -6932,9 +6721,9 @@ export default {
     </template>
     ```
 
-## <span id="head209">14. 其他</span>
+## 14. 其他
 
-### <span id="head210">14.1 全局 `API` 的转移</span>
+### 14.1 全局 `API` 的转移
 
 - `Vue2.x` 有许多全局 `API` 和配置
 
@@ -6969,7 +6758,7 @@ export default {
     | Vue.use                  | app.use                                     |
     | Vue.prototype            | app.config.globalProperties                 |
 
-### <span id="head211">14.2 其他改变</span>
+### 14.2 其他改变
 
 - `data` 选项应始终被声明为一个函数
 
